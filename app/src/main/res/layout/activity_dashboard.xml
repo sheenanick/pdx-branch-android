@@ -38,15 +38,32 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/placeholder"
         android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/thinkingIconImageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/greetingTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/thinking"
+        android:contentDescription="@string/thinking"/>
 
     <EditText
         android:id="@+id/addPostEditText"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/greetingTextView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_alignBottom="@+id/thinkingIconImageView"
+        android:layout_toRightOf="@id/thinkingIconImageView"
+        android:layout_toEndOf="@+id/thinkingIconImageView"
         android:inputType="text"
         android:hint="@string/post_hint" />
 
@@ -54,9 +71,12 @@
         android:id="@+id/postButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/greetingTextView"
         android:layout_alignBottom="@+id/addPostEditText"
         android:layout_toRightOf="@+id/addPostEditText"
         android:layout_toEndOf="@+id/addPostEditText"
+        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:text="@string/post"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite" />
