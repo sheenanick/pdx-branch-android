@@ -21,7 +21,13 @@
                 android:value="com.epicodus.pdxbranch.MainActivity"></meta-data>
         </activity>
         <activity android:name=".DashboardActivity"></activity>
-        <activity android:name=".ProfileActivity"></activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:parentActivityName="com.epicodus.pdxbranch.DashboardActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.pdxbranch.DashboardActivity"></meta-data>
+        </activity>
     </application>
 
 </manifest>
