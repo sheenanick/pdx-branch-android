@@ -14,12 +14,41 @@
         android:contentDescription="@string/background"/>
 
     <TextView
+        android:id="@+id/greetingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test"
-        android:id="@+id/testTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="20dp"
+        android:text="@string/placholder"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/addPostEditText"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/greetingTextView"
+        android:inputType="text"
+        android:hint="@string/post_hint" />
+
+    <Button
+        android:id="@+id/postButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/addPostEditText"
+        android:layout_toRightOf="@+id/addPostEditText"
+        android:layout_toEndOf="@+id/addPostEditText"
+        android:text="@string/post"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite" />
+
+    <ListView
+        android:id="@+id/newsFeedListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/addPostEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
 </RelativeLayout>
