@@ -31,7 +31,7 @@ Please feel free to contact me at sheenanick@gmail.com if you have any issues or
 
 ## Other Resources
 
-See the web application for pdxBranch built in Ember [here](https://github.com/mlawson3691/branch-social).
+See the GitHub repository for pdxBranch built in Ember [here](https://github.com/mlawson3691/branch-social).
 
 ### License
 
