@@ -5,8 +5,43 @@
     android:layout_height="match_parent"
     tools:context="com.epicodus.pdxbranch.MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background"
+        android:contentDescription="@string/background"/>
+
+    <ImageView
+        android:id="@+id/collaborationImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up" />
+        android:layout_above="@+id/newUserTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/collaboration"
+        android:contentDescription="@string/collaboration"/>
+
+    <TextView
+        android:id="@+id/newUserTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/new_user"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/newUserTextView"
+        android:text="@string/sign_up"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite" />
+
+
 </RelativeLayout>

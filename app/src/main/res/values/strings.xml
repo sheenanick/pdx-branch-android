@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PdxBranch</string>
+    <string name="background">textured background</string>
+    <string name="collaboration">collaboration symbol</string>
+    <string name="new_user">New to pdxBranch?</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
