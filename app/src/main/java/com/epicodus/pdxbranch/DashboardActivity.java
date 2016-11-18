@@ -70,7 +70,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sign_out:
-                // User chose the "Sign Out" item... add code here once Sign in functionality is implemented
+                // User chose the "Sign Out" item... until Sign in/out functionality is implemented simply reroute to MainActivity
+                Intent signOutIntent = new Intent(DashboardActivity.this, MainActivity.class);
+                startActivity(signOutIntent);
                 return true;
 
             case R.id.action_profile:
