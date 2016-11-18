@@ -3,6 +3,9 @@ package com.epicodus.pdxbranch;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
+    @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.greetingTextView) TextView mGreetingTextView;
     @Bind(R.id.addPostEditText) EditText mAddPostEditText;
     @Bind(R.id.postButton) Button mPostButton;
@@ -27,6 +31,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         mPostButton.setOnClickListener(this);
 
@@ -49,5 +56,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, posts);
             mNewsFeedListView.setAdapter(adapter);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar_menu, menu);
+        return true;
     }
 }

@@ -13,5 +13,7 @@
     <string name="zip_code">Zip Code</string>
     <string name="post">Post</string>
     <string name="post_hint">What are you thinking?</string>
-    <string name="placholder">Placeholder Text</string>
+    <string name="placeholder">Placeholder Text</string>
+    <string name="action_profile">Profile</string>
+    <string name="action_settings">Settings</string>
 </resources>
