@@ -16,4 +16,5 @@
     <string name="placeholder">Placeholder Text</string>
     <string name="action_profile">Profile</string>
     <string name="action_sign_out">Sign Out</string>
+    <string name="profile_placeholder">Your profile! Coming soon...</string>
 </resources>
