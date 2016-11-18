@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -47,9 +48,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if (v == mPostButton) {
-            posts.add(0, mAddPostEditText.getText().toString());
-            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, posts);
-            mNewsFeedListView.setAdapter(adapter);
+            String post = mAddPostEditText.getText().toString();
+            if (post.equals("")) {
+                Toast.makeText(DashboardActivity.this, "Enter something to post!", Toast.LENGTH_SHORT).show();
+            } else {
+                posts.add(0, post);
+                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, posts);
+                mNewsFeedListView.setAdapter(adapter);
+                mAddPostEditText.setText("");
+            }
+
         }
     }
 
