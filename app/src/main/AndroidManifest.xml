@@ -21,6 +21,8 @@
                 android:value="com.epicodus.pdxbranch.MainActivity">
             </meta-data>
         </activity>
+        <activity android:name=".DashboardActivity">
+        </activity>
     </application>
 
 </manifest>
