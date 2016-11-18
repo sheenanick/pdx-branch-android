@@ -31,6 +31,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mSubmitButton.setOnClickListener(this);
     }

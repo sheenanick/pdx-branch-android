@@ -15,10 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity">
+        <activity
+            android:name=".SignUpActivity"
+            android:parentActivityName="com.epicodus.pdxbranch.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.pdxbranch.MainActivity"></meta-data>
+                android:value="com.epicodus.pdxbranch.MainActivity">
+            </meta-data>
         </activity>
         <activity android:name=".DashboardActivity"></activity>
         <activity
@@ -26,7 +29,8 @@
             android:parentActivityName="com.epicodus.pdxbranch.DashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.pdxbranch.DashboardActivity"></meta-data>
+                android:value="com.epicodus.pdxbranch.DashboardActivity">
+            </meta-data>
         </activity>
     </application>
 
