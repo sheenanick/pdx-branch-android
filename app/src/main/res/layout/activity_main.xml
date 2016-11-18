@@ -32,33 +32,58 @@
 
     <ImageView
         android:id="@+id/collaborationImageView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/newUserTextView"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
+        android:paddingTop="130dp"
+        android:paddingBottom="100dp"
+        android:background="@color/colorWhite"
         android:src="@drawable/collaboration"
         android:contentDescription="@string/collaboration"/>
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/collaborationImageView"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="60dp"
+        android:text="@string/app_name"
+        android:textSize="42sp"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/subTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/collaborationImageView"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="50dp"
+        android:text="@string/subtitle"
+        android:textSize="22sp"/>
 
     <TextView
         android:id="@+id/newUserTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/collaborationImageView"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/new_user"
-        android:textSize="30sp" />
+        android:textSize="28sp" />
 
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/newUserTextView"
         android:text="@string/sign_up"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite" />
-
 
 </RelativeLayout>

@@ -2,6 +2,7 @@
     <string name="app_name">pdxBranch</string>
     <string name="background">textured background</string>
     <string name="collaboration">collaboration symbol</string>
+    <string name="subtitle">A Hub for Collaboration</string>
     <string name="new_user">New to pdxBranch?</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_title">Account Details</string>
