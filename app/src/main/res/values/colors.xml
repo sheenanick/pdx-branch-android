@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorOceanGreen">#4AA772</color>
-    <color name="colorAstralBlue">#3688A4</color>
-    <color name="colorTexasRose">#FFAC55</color>
+    <color name="colorPrimary">#4AA772</color>
+    <color name="colorPrimaryDark">#3688A4</color>
+    <color name="colorAccent">#FFAC55</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorSilver">#ccc</color>
     <color name="colorBlack">#000</color>
