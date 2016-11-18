@@ -5,4 +5,71 @@
     android:layout_height="match_parent"
     tools:context="com.epicodus.pdxbranch.SignUpActivity">
 
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/sign_up_title"
+        android:textSize="30sp"/>
+
+    <EditText
+        android:id="@+id/firstNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleTextView"
+        android:hint="@string/first_name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/lastNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstNameEditText"
+        android:hint="@string/last_name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/screenNameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lastNameEditText"
+        android:hint="@string/screen_name"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/cityEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/screenNameEditText"
+        android:hint="@string/city"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/stateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cityEditText"
+        android:hint="@string/state"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/zipCodeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stateEditText"
+        android:hint="@string/zip_code"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/sign_up"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite"/>
+
 </RelativeLayout>
