@@ -40,12 +40,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         Intent intent = getIntent();
         String first_name = intent.getStringExtra("first_name");
-        String last_name = intent.getStringExtra("last_name");
-        String screen_name = intent.getStringExtra("screen_name");
-        String city = intent.getStringExtra("city");
-        String state = intent.getStringExtra("state");
-        String zip_code = intent.getStringExtra("zip_code");
-
         String greeting = "Hello, " + first_name;
         mGreetingTextView.setText(greeting);
     }
