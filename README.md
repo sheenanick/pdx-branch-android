@@ -1,4 +1,6 @@
-# Message-Board
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mlawson3691/branch-social/master/public/assets/images/logo-black.png">
+</p>
 
 #### _Epicodus Android Week 1 Independent Project, 11.18.2016_
 
