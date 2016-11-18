@@ -31,7 +31,14 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v == mSubmitButton) {
-
+            Intent intent = new Intent(SignUpActivity.this, DashboardActivity.class);
+            intent.putExtra("first_name", mFirstNameEditText.getText().toString());
+            intent.putExtra("last_name", mLastNameEditText.getText().toString());
+            intent.putExtra("screen_name", mScreenNameEditText.getText().toString());
+            intent.putExtra("city", mCityEditText.getText().toString());
+            intent.putExtra("state", mStateEditText.getText().toString());
+            intent.putExtra("zip_code", mZipCodeEditText.getText().toString());
+            startActivity(intent);
         }
     }
 }
