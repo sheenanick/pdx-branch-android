@@ -16,7 +16,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone https://github.com/sheenanick/pdx-branch-android` this repository
+* `git clone https://github.com/sheenanick/pdx-branch-android`
 * open Android Studio
 * select 'Open an existing Android Studio project' and find the cloned repository
 
