@@ -11,4 +11,7 @@
     <string name="city">City</string>
     <string name="state">State</string>
     <string name="zip_code">Zip Code</string>
+    <string name="post">Post</string>
+    <string name="post_hint">What are you thinking?</string>
+    <string name="placholder">Placeholder Text</string>
 </resources>
