@@ -40,15 +40,14 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         String greeting = "Hello, " + first_name;
         mGreetingTextView.setText(greeting);
-
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, posts);
-        mNewsFeedListView.setAdapter(adapter);
     }
 
     @Override
     public void onClick(View v) {
         if (v == mPostButton) {
-            posts.add(mAddPostEditText.getText().toString());
+            posts.add(0, mAddPostEditText.getText().toString());
+            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, posts);
+            mNewsFeedListView.setAdapter(adapter);
         }
     }
 }
