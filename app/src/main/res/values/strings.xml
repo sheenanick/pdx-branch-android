@@ -4,6 +4,7 @@
     <string name="collaboration">collaboration symbol</string>
     <string name="subtitle">A Hub for Collaboration</string>
     <string name="new_user">New to pdxBranch?</string>
+    <string name="new_user_subtitle">Make a profile and start collaborating!</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_title">Account Details</string>
     <string name="first_name">First Name</string>

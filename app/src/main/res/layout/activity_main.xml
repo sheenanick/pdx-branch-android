@@ -56,14 +56,15 @@
         android:textColor="@color/colorBlack" />
 
     <TextView
-        android:id="@+id/subTitleTextView"
+        android:id="@+id/subtitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/collaborationImageView"
         android:layout_centerHorizontal="true"
         android:paddingBottom="50dp"
         android:text="@string/subtitle"
-        android:textSize="22sp"/>
+        android:textSize="22sp"
+        android:textColor="@color/colorBlack" />
 
     <TextView
         android:id="@+id/newUserTextView"
@@ -74,14 +75,24 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="15dp"
         android:text="@string/new_user"
-        android:textSize="28sp" />
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/newUserSubtitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/newUserTextView"
+        android:layout_marginBottom="20dp"
+        android:text="@string/new_user_subtitle"
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/newUserTextView"
+        android:layout_below="@+id/newUserSubtitleTextView"
         android:text="@string/sign_up"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite" />
