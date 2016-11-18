@@ -1,11 +1,14 @@
 package com.epicodus.pdxbranch;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,14 +34,43 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         if (v == mSubmitButton) {
-            Intent intent = new Intent(SignUpActivity.this, DashboardActivity.class);
-            intent.putExtra("first_name", mFirstNameEditText.getText().toString());
-            intent.putExtra("last_name", mLastNameEditText.getText().toString());
-            intent.putExtra("screen_name", mScreenNameEditText.getText().toString());
-            intent.putExtra("city", mCityEditText.getText().toString());
-            intent.putExtra("state", mStateEditText.getText().toString());
-            intent.putExtra("zip_code", mZipCodeEditText.getText().toString());
-            startActivity(intent);
+            String first_name = mFirstNameEditText.getText().toString();
+            String last_name = mLastNameEditText.getText().toString();
+            String screen_name = mScreenNameEditText.getText().toString();
+            String city = mCityEditText.getText().toString();
+            String state = mStateEditText.getText().toString();
+            String zip_code =mZipCodeEditText.getText().toString();
+
+            if (first_name.equals("") || last_name.equals("") || screen_name.equals("") || city.equals("") || state.equals("") || zip_code.equals("")) {
+                if (first_name.equals("")) {
+                    mFirstNameEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                }
+                if (last_name.equals("")) {
+                    mLastNameEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                }
+                if (screen_name.equals("")) {
+                    mScreenNameEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                }
+                if (city.equals("")) {
+                    mCityEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                }
+                if (state.equals("")) {
+                    mStateEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                }
+                if (zip_code.equals("")) {
+                    mZipCodeEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                }
+                Toast.makeText(SignUpActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
+            } else {
+                Intent intent = new Intent(SignUpActivity.this, DashboardActivity.class);
+                intent.putExtra("first_name", first_name);
+                intent.putExtra("last_name", last_name);
+                intent.putExtra("screen_name", screen_name);
+                intent.putExtra("city", city);
+                intent.putExtra("state", state);
+                intent.putExtra("zip_code", zip_code);
+                startActivity(intent);
+            }
         }
     }
 }
