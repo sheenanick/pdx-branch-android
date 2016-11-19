@@ -27,6 +27,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Bind(R.id.postButton) Button mPostButton;
     @Bind(R.id.newsFeedListView) ListView mNewsFeedListView;
     ArrayList<String> posts = new ArrayList<>();
+    String first_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         mPostButton.setOnClickListener(this);
 
         Intent intent = getIntent();
-        String first_name = intent.getStringExtra("first_name");
-        String greeting = "Hello, " + first_name;
+        first_name = intent.getStringExtra("first_name");
+        String greeting;
+        if (first_name == null) {
+            greeting = "Welcome to pdxBranch";
+        } else {
+            greeting = "Welcome to pdxBranch, " + first_name;
+        }
         mGreetingTextView.setText(greeting);
     }
 
@@ -72,19 +78,19 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sign_out:
-                // User chose the "Sign Out" item... until Sign in/out functionality is implemented simply reroute to MainActivity
+                // Until Sign in/out functionality is implemented simply reroute to MainActivity
                 Intent signOutIntent = new Intent(DashboardActivity.this, MainActivity.class);
                 startActivity(signOutIntent);
                 return true;
 
             case R.id.action_profile:
                 Intent profileIntent = new Intent(DashboardActivity.this, ProfileActivity.class);
+                profileIntent.putExtra("first_name", first_name);
                 startActivity(profileIntent);
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
-
         }
     }
 }
