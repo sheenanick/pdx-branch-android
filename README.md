@@ -8,6 +8,11 @@
 
 This is an Android application for pdxBranch - a networking site for developers in the Portland, Oregon area.
 
+This project is still a work in progress and the following features are not yet implemented:
+* Firebase user authentication (Sign in/out functionality)
+* Firebase data storage of user data (profile information, posts, etc.)
+* ProfileActivity content
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
