@@ -21,4 +21,7 @@
     <string name="action_sign_out">Sign Out</string>
     <string name="action_groups">Groups</string>
     <string name="profile_placeholder">Your profile! Coming soon...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
