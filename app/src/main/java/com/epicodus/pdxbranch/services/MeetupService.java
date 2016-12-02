@@ -58,7 +58,7 @@ public class MeetupService {
                     if (organizerPhoto != null) {
                         organizerPhotoLink = organizerPhoto.getString("thumb_link");
                     } else {
-                        organizerPhotoLink = "null";
+                        organizerPhotoLink = "http://www.pngall.com/wp-content/uploads/2016/05/Branch-Free-Download-PNG.png";
                     }
 
                     JSONObject groupPhoto = meetupGroupJSON.optJSONObject("group_photo");
@@ -66,7 +66,7 @@ public class MeetupService {
                     if (groupPhoto != null) {
                         groupPhotoLink = groupPhoto.getString("thumb_link");
                     } else {
-                        groupPhotoLink = "null";
+                        groupPhotoLink = "http://www.pngall.com/wp-content/uploads/2016/05/Branch-Free-Download-PNG.png";
                     }
 
                     JSONArray photosJSON = meetupGroupJSON.getJSONArray("photos");
