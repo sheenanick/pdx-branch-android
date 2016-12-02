@@ -2,26 +2,34 @@ package com.epicodus.pdxbranch.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.epicodus.pdxbranch.R;
+import com.epicodus.pdxbranch.adapters.MeetupGroupAdapter;
 import com.epicodus.pdxbranch.models.MeetupGroup;
 import com.epicodus.pdxbranch.services.MeetupService;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class GroupsActivity extends AppCompatActivity {
-    public ArrayList<MeetupGroup> mRecommendedGroups = new ArrayList<>();
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private MeetupGroupAdapter mAdapter;
+    public ArrayList<MeetupGroup> mMeetupGroups = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
+        ButterKnife.bind(this);
 
         getRecommendedGroups();
     }
@@ -37,7 +45,18 @@ public class GroupsActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                mRecommendedGroups = meetupService.processResults(response);
+                mMeetupGroups = meetupService.processResults(response);
+
+                GroupsActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter = new MeetupGroupAdapter(getApplicationContext(), mMeetupGroups);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GroupsActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
+                    }
+                });
 
             }
         });
