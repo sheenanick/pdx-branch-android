@@ -1,7 +1,10 @@
 package com.epicodus.pdxbranch.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
+@Parcel
 public class MeetupGroup {
     private String mName;
     private String mMeetupLink;
@@ -12,6 +15,8 @@ public class MeetupGroup {
     private String mOrganizerPhotoThumb;
     private String mGroupPhotoThumb;
     private ArrayList<String> mPhotos;
+
+    public MeetupGroup() {}
 
     public MeetupGroup(String mName, String mMeetupLink, String mDescription, int mDateCreated, int mNumOfMembers, String mOrganizerName, String mOrganizerPhotoThumb, String mGroupPhotoThumb, ArrayList<String> mPhotos) {
         this.mName = mName;
