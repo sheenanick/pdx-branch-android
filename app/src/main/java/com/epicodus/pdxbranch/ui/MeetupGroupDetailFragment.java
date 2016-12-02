@@ -6,22 +6,53 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.epicodus.pdxbranch.R;
+import com.epicodus.pdxbranch.models.MeetupGroup;
+import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class MeetupGroupDetailFragment extends Fragment {
+    @Bind(R.id.groupImageView) ImageView mGroupImage;
+    @Bind(R.id.meetupLogo) ImageView mMeetupLogo;
+    @Bind(R.id.groupName) TextView mGroupName;
+    @Bind(R.id.numOfMembers) TextView mNumOfMembers;
+    @Bind(R.id.groupDescription) TextView mGroupDescription;
 
+    private MeetupGroup mMeetupGroup;
 
-    public MeetupGroupDetailFragment() {
-        // Required empty public constructor
+    public MeetupGroupDetailFragment newInstance(MeetupGroup meetupGroup) {
+        MeetupGroupDetailFragment meetupGroupDetailFragment = new MeetupGroupDetailFragment();
+        Bundle args = new Bundle();
+        args.putParcelable("meetupGroup", Parcels.wrap(meetupGroup));
+        meetupGroupDetailFragment.setArguments(args);
+        return meetupGroupDetailFragment;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mMeetupGroup = Parcels.unwrap(getArguments().getParcelable("meetupGroup"));
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meetup_group_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_meetup_group_detail, container, false);
+        ButterKnife.bind(this, view);
+
+        Picasso.with(view.getContext()).load(mMeetupGroup.getmGroupPhotoThumb()).into(mGroupImage);
+        mGroupName.setText(mMeetupGroup.getmName());
+        mNumOfMembers.setText(mMeetupGroup.getmNumOfMembers());
+        mGroupDescription.setText(mMeetupGroup.getmDescription());
+
+        return view;
     }
 
 }
