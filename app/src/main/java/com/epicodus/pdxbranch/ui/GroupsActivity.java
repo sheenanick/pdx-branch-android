@@ -1,10 +1,15 @@
 package com.epicodus.pdxbranch.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.adapters.MeetupGroupAdapter;
@@ -21,6 +26,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class GroupsActivity extends AppCompatActivity {
+    @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private MeetupGroupAdapter mAdapter;
     public ArrayList<MeetupGroup> mMeetupGroups = new ArrayList<>();
@@ -30,6 +36,10 @@ public class GroupsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
         ButterKnife.bind(this);
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getRecommendedGroups();
     }
@@ -49,16 +59,17 @@ public class GroupsActivity extends AppCompatActivity {
 
                 GroupsActivity.this.runOnUiThread(new Runnable() {
                     @Override
-                    public void run() {
-                        mAdapter = new MeetupGroupAdapter(getApplicationContext(), mMeetupGroups);
+                    public void run() { mAdapter = new MeetupGroupAdapter(getApplicationContext(), mMeetupGroups);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GroupsActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
+
                     }
                 });
 
             }
         });
     }
+
 }
