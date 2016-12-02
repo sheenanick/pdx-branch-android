@@ -27,7 +27,7 @@ public class MeetupGroupDetailFragment extends Fragment {
 
     private MeetupGroup mMeetupGroup;
 
-    public MeetupGroupDetailFragment newInstance(MeetupGroup meetupGroup) {
+    public static MeetupGroupDetailFragment newInstance(MeetupGroup meetupGroup) {
         MeetupGroupDetailFragment meetupGroupDetailFragment = new MeetupGroupDetailFragment();
         Bundle args = new Bundle();
         args.putParcelable("meetupGroup", Parcels.wrap(meetupGroup));
