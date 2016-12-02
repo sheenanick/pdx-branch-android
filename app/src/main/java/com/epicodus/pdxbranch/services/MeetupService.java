@@ -38,10 +38,47 @@ public class MeetupService {
 
         try {
             String jsonData = response.body().string();
+            Log.d("JSON", jsonData);
             if (response.isSuccessful()) {
                 JSONArray meetupGroupsJSON = new JSONArray(jsonData);
                 for (int i = 0; i < meetupGroupsJSON.length(); i++) {
+                    Log.d("TEST", i + "Group!");
+                    JSONObject meetupGroupJSON = meetupGroupsJSON.getJSONObject(i);
 
+                    String name = meetupGroupJSON.getString("name");
+                    String link = meetupGroupJSON.getString("link");
+                    String description = meetupGroupJSON.getString("description");
+                    int date = meetupGroupJSON.getInt("created");
+                    int members = meetupGroupJSON.getInt("members");
+
+                    JSONObject organizer = meetupGroupJSON.getJSONObject("organizer");
+                    String organizerName = organizer.getString("name");
+                    JSONObject organizerPhoto = organizer.optJSONObject("photo");
+                    String organizerPhotoLink;
+                    if (organizerPhoto != null) {
+                        organizerPhotoLink = organizerPhoto.getString("thumb_link");
+                    } else {
+                        organizerPhotoLink = "null";
+                    }
+
+                    JSONObject groupPhoto = meetupGroupJSON.optJSONObject("group_photo");
+                    String groupPhotoLink;
+                    if (groupPhoto != null) {
+                        groupPhotoLink = groupPhoto.getString("thumb_link");
+                    } else {
+                        groupPhotoLink = "null";
+                    }
+
+                    JSONArray photosJSON = meetupGroupJSON.getJSONArray("photos");
+                    ArrayList<String> photos = new ArrayList<>();
+                    for (int j = 0; j < photosJSON.length(); j++) {
+                        String photoLink = photosJSON.getJSONObject(j).getString("thumb_link");
+                        photos.add(photoLink);
+                    }
+
+                    MeetupGroup meetupGroup = new MeetupGroup(name, link, description, date, members, organizerName, organizerPhotoLink, groupPhotoLink, photos);
+                    meetupGroups.add(meetupGroup);
+                    Log.d("GROUPS", meetupGroup.getmName());
                 }
             }
         } catch (IOException e) {
