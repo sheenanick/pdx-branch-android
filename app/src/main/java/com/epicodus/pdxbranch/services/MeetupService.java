@@ -38,11 +38,9 @@ public class MeetupService {
 
         try {
             String jsonData = response.body().string();
-            Log.d("JSON", jsonData);
             if (response.isSuccessful()) {
                 JSONArray meetupGroupsJSON = new JSONArray(jsonData);
                 for (int i = 0; i < meetupGroupsJSON.length(); i++) {
-                    Log.d("TEST", i + "Group!");
                     JSONObject meetupGroupJSON = meetupGroupsJSON.getJSONObject(i);
 
                     String name = meetupGroupJSON.getString("name");
@@ -78,7 +76,6 @@ public class MeetupService {
 
                     MeetupGroup meetupGroup = new MeetupGroup(name, link, description, date, members, organizerName, organizerPhotoLink, groupPhotoLink, photos);
                     meetupGroups.add(meetupGroup);
-                    Log.d("GROUPS", meetupGroup.getmName());
                 }
             }
         } catch (IOException e) {
