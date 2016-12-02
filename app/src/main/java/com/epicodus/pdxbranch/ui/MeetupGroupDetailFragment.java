@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +27,7 @@ public class MeetupGroupDetailFragment extends Fragment implements View.OnClickL
     @Bind(R.id.groupName) TextView mGroupName;
     @Bind(R.id.numOfMembers) TextView mNumOfMembers;
     @Bind(R.id.groupDescription) TextView mGroupDescription;
+    @Bind(R.id.joinOnMeetupButton) Button mJoinButton;
 
     private MeetupGroup mMeetupGroup;
 
@@ -56,13 +58,14 @@ public class MeetupGroupDetailFragment extends Fragment implements View.OnClickL
 
         mMeetupLogo.setOnClickListener(this);
         mGroupName.setOnClickListener(this);
+        mJoinButton.setOnClickListener(this);
 
         return view;
     }
 
     @Override
     public void onClick(View v) {
-        if (v == mMeetupLogo || v == mGroupName) {
+        if (v == mMeetupLogo || v == mGroupName || v == mJoinButton) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mMeetupGroup.getmMeetupLink()));
             startActivity(webIntent);
         }
