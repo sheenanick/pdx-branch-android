@@ -2,12 +2,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.epicodus.pdxbranch.ui.MeetupGroupDetailFragment">
+    tools:context=".ui.MeetupGroupDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="50dp">
+            <ImageView
+                android:id="@+id/groupImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/avatar"/>
+            <TextView
+                android:id="@+id/groupName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/groupImageView"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:textSize="18sp"
+                android:text="@string/group_name" />
+            <TextView
+                android:id="@+id/numOfMembers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/groupName"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/colorAccent"
+                android:text="@string/member_num"/>
+
+            <ImageView
+                android:id="@+id/meetupLogo"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_alignTop="@+id/groupName"
+                android:layout_toRightOf="@+id/groupName"
+                android:layout_toEndOf="@+id/groupName"
+                android:src="@drawable/meetuplogo"/>
+            <TextView
+                android:id="@+id/groupDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/numOfMembers"
+                android:layout_marginTop="10dp"
+                android:text="@string/group_description" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
 </FrameLayout>
