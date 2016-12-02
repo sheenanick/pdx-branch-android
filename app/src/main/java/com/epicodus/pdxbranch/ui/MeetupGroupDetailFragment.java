@@ -1,6 +1,8 @@
 package com.epicodus.pdxbranch.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +20,7 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MeetupGroupDetailFragment extends Fragment {
+public class MeetupGroupDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.groupImageView) ImageView mGroupImage;
     @Bind(R.id.meetupLogo) ImageView mMeetupLogo;
     @Bind(R.id.groupName) TextView mGroupName;
@@ -52,7 +54,18 @@ public class MeetupGroupDetailFragment extends Fragment {
         mNumOfMembers.setText(mMeetupGroup.getmNumOfMembers().toString() + " members");
         mGroupDescription.setText(mMeetupGroup.getmDescription());
 
+        mGroupImage.setOnClickListener(this);
+        mMeetupLogo.setOnClickListener(this);
+        mGroupName.setOnClickListener(this);
+
         return view;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mMeetupLogo || v == mGroupName || v == mGroupImage) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mMeetupGroup.getmMeetupLink()));
+            startActivity(webIntent);
+        }
+    }
 }
