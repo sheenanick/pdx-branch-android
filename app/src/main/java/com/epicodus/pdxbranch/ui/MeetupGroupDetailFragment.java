@@ -54,7 +54,6 @@ public class MeetupGroupDetailFragment extends Fragment implements View.OnClickL
         mNumOfMembers.setText(mMeetupGroup.getmNumOfMembers().toString() + " members");
         mGroupDescription.setText(mMeetupGroup.getmDescription());
 
-        mGroupImage.setOnClickListener(this);
         mMeetupLogo.setOnClickListener(this);
         mGroupName.setOnClickListener(this);
 
@@ -63,7 +62,7 @@ public class MeetupGroupDetailFragment extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        if (v == mMeetupLogo || v == mGroupName || v == mGroupImage) {
+        if (v == mMeetupLogo || v == mGroupName) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mMeetupGroup.getmMeetupLink()));
             startActivity(webIntent);
         }
