@@ -49,7 +49,7 @@ public class MeetupGroupDetailFragment extends Fragment {
 
         Picasso.with(view.getContext()).load(mMeetupGroup.getmGroupPhotoThumb()).into(mGroupImage);
         mGroupName.setText(mMeetupGroup.getmName());
-        mNumOfMembers.setText(mMeetupGroup.getmNumOfMembers());
+        mNumOfMembers.setText(mMeetupGroup.getmNumOfMembers().toString() + " members");
         mGroupDescription.setText(mMeetupGroup.getmDescription());
 
         return view;

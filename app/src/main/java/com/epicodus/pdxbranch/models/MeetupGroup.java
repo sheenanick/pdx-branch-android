@@ -10,7 +10,7 @@ public class MeetupGroup {
     private String mMeetupLink;
     private String mDescription;
     private int mDateCreated;
-    private int mNumOfMembers;
+    private Integer mNumOfMembers;
     private String mOrganizerName;
     private String mOrganizerPhotoThumb;
     private String mGroupPhotoThumb;
@@ -18,7 +18,7 @@ public class MeetupGroup {
 
     public MeetupGroup() {}
 
-    public MeetupGroup(String mName, String mMeetupLink, String mDescription, int mDateCreated, int mNumOfMembers, String mOrganizerName, String mOrganizerPhotoThumb, String mGroupPhotoThumb, ArrayList<String> mPhotos) {
+    public MeetupGroup(String mName, String mMeetupLink, String mDescription, int mDateCreated, Integer mNumOfMembers, String mOrganizerName, String mOrganizerPhotoThumb, String mGroupPhotoThumb, ArrayList<String> mPhotos) {
         this.mName = mName;
         this.mMeetupLink = mMeetupLink;
         this.mDescription = mDescription;
@@ -46,7 +46,7 @@ public class MeetupGroup {
         return mDateCreated;
     }
 
-    public int getmNumOfMembers() {
+    public Integer getmNumOfMembers() {
         return mNumOfMembers;
     }
 

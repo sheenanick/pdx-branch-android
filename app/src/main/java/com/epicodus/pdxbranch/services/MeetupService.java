@@ -47,7 +47,7 @@ public class MeetupService {
                     String link = meetupGroupJSON.getString("link");
                     String description = meetupGroupJSON.getString("description");
                     int date = meetupGroupJSON.getInt("created");
-                    int members = meetupGroupJSON.getInt("members");
+                    Integer members = meetupGroupJSON.getInt("members");
 
                     JSONObject organizer = meetupGroupJSON.getJSONObject("organizer");
                     String organizerName = organizer.getString("name");
@@ -62,7 +62,7 @@ public class MeetupService {
                     JSONObject groupPhoto = meetupGroupJSON.optJSONObject("group_photo");
                     String groupPhotoLink;
                     if (groupPhoto != null) {
-                        groupPhotoLink = groupPhoto.getString("thumb_link");
+                        groupPhotoLink = groupPhoto.getString("highres_link");
                     } else {
                         groupPhotoLink = "http://www.pngall.com/wp-content/uploads/2016/05/Branch-Free-Download-PNG.png";
                     }
