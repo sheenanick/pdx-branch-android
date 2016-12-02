@@ -11,5 +11,7 @@
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_sign_out"
         android:title="@string/action_sign_out" />
+    <item android:id="@+id/action_groups"
+        android:title="@string/action_groups" />
 
 </menu>

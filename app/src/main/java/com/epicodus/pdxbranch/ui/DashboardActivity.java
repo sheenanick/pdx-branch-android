@@ -85,6 +85,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 startActivity(signOutIntent);
                 return true;
 
+            case R.id.action_groups:
+                Intent groupsIntent = new Intent(DashboardActivity.this, GroupsActivity.class);
+                startActivity(groupsIntent);
+                return true;
+
             case R.id.action_profile:
                 Intent profileIntent = new Intent(DashboardActivity.this, ProfileActivity.class);
                 profileIntent.putExtra("first_name", first_name);
