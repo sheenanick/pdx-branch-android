@@ -1,5 +1,6 @@
 package com.epicodus.pdxbranch.services;
 
+import android.text.Html;
 import android.util.Log;
 
 import com.epicodus.pdxbranch.Constants;
@@ -46,6 +47,7 @@ public class MeetupService {
                     String name = meetupGroupJSON.getString("name");
                     String link = meetupGroupJSON.getString("link");
                     String description = meetupGroupJSON.getString("description");
+                    description = Html.fromHtml(description).toString();
                     int date = meetupGroupJSON.getInt("created");
                     Integer members = meetupGroupJSON.getInt("members");
 
