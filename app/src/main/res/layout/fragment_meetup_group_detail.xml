@@ -48,15 +48,6 @@
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/colorAccent"
                 android:text="@string/member_num"/>
-            <TextView
-                android:id="@+id/groupDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/numOfMembers"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:text="@string/group_description" />
             <Button
                 android:id="@+id/joinOnMeetupButton"
                 android:layout_width="match_parent"
@@ -65,8 +56,23 @@
                 android:text="@string/join_on_meetup"
                 android:background="@color/colorPrimaryDark"
                 android:textColor="@color/colorWhite"/>
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/numOfMembers"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:layout_above="@+id/joinOnMeetupButton">
+                <TextView
+                    android:id="@+id/groupDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/group_description" />
+            </ScrollView>
         </RelativeLayout>
-
-
     </LinearLayout>
 </FrameLayout>
