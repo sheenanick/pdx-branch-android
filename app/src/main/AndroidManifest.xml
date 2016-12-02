@@ -39,7 +39,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.DashboardActivity" />
         </activity>
-        <activity android:name=".ui.MeetupGroupDetailActivity"></activity>
+        <activity
+            android:name=".ui.MeetupGroupDetailActivity"
+            android:parentActivityName=".ui.GroupsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.GroupsActivity" />
+        </activity>
     </application>
 
 </manifest>
