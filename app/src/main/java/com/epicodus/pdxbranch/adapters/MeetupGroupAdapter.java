@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.models.MeetupGroup;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -56,6 +57,7 @@ public class MeetupGroupAdapter extends RecyclerView.Adapter<MeetupGroupAdapter.
         }
 
         public void bindMeetupGroup(MeetupGroup meetupGroup) {
+            Picasso.with(mContext).load(meetupGroup.getmGroupPhotoThumb()).into(mGroupImageView);
             mGroupName.setText(meetupGroup.getmName());
             mOrganizerName.setText("Organized by " + meetupGroup.getmOrganizerName());
         }
