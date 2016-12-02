@@ -1,8 +1,10 @@
-package com.epicodus.pdxbranch;
+package com.epicodus.pdxbranch.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
+import com.epicodus.pdxbranch.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

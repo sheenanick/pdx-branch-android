@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,20 +16,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUpActivity"
-            android:parentActivityName="com.epicodus.pdxbranch.MainActivity">
+            android:name=".ui.SignUpActivity"
+            android:parentActivityName=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.pdxbranch.MainActivity">
+                android:value=".ui.MainActivity">
             </meta-data>
         </activity>
-        <activity android:name=".DashboardActivity"></activity>
+        <activity android:name=".ui.DashboardActivity"></activity>
         <activity
-            android:name=".ProfileActivity"
-            android:parentActivityName="com.epicodus.pdxbranch.DashboardActivity">
+            android:name=".ui.ProfileActivity"
+            android:parentActivityName=".ui.DashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.pdxbranch.DashboardActivity">
+                android:value=".ui.DashboardActivity">
             </meta-data>
         </activity>
     </application>
