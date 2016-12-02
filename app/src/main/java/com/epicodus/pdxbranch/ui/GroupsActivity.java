@@ -5,15 +5,18 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.epicodus.pdxbranch.R;
+import com.epicodus.pdxbranch.models.MeetupGroup;
 import com.epicodus.pdxbranch.services.MeetupService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class GroupsActivity extends AppCompatActivity {
+    public ArrayList<MeetupGroup> mRecommendedGroups = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +37,8 @@ public class GroupsActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(GroupsActivity.class.getSimpleName(), jsonData);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mRecommendedGroups = meetupService.processResults(response);
+
             }
         });
     }
