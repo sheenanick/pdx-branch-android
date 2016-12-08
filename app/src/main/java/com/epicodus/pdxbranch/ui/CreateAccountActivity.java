@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,10 +47,34 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    private boolean isValidEmail(String email) {
+        boolean isGoodEmail = (email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        if (!isGoodEmail) {
+            mEmail.setError("Please enter a valid email address");
+        }
+        return isGoodEmail;
+    }
+
+    private boolean isValidPassword(String password, String confirmPassword) {
+        if (password.length() < 6) {
+            mPassword.setError("Passwords must be at least 6 characters");
+            return false;
+        } else if (!password.equals(confirmPassword)) {
+            mPassword.setError("Passwords do not match");
+            return false;
+        }
+        return true;
+    }
+
     private void createNewUser() {
         final String email = mEmail.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
         String confirmPassword = mConfirmPassword.getText().toString().trim();
+
+        boolean validEmail = isValidEmail(email);
+        boolean validPassword = isValidPassword(password, confirmPassword);
+
+        if (!validEmail || !validPassword) return;
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
