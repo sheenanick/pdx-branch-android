@@ -10,8 +10,7 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="screen_name">Screen Name</string>
-    <string name="city">City</string>
-    <string name="state">State</string>
+    <string name="avatar">Profile image URL</string>
     <string name="zip_code">Zip Code</string>
     <string name="thinking">Thinking Icon</string>
     <string name="post">Post</string>

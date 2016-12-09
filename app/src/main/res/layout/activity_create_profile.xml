@@ -65,37 +65,29 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/cityEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/screenNameEditText"
-        android:hint="@string/city"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/stateEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cityEditText"
-        android:hint="@string/state"
-        android:inputType="text" />
-
-    <EditText
         android:id="@+id/zipCodeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/stateEditText"
+        android:layout_below="@+id/screenNameEditText"
         android:hint="@string/zip_code"
         android:inputType="number" />
+
+    <EditText
+        android:id="@+id/avatarEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zipCodeEditText"
+        android:hint="@string/avatar"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:text="@string/sign_up"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorWhite"
+        android:layout_below="@+id/avatarEditText"
+        android:layout_marginTop="60dp" />
 
 </RelativeLayout>
