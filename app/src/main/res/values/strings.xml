@@ -25,5 +25,7 @@
     <string name="member_num">500 members</string>
     <string name="join_on_meetup">Join on Meetup</string>
     <string name="group_description">This is a group for anyone interested in software development and web development. The Tech Academy is a code school located in downtown Portland. We train students in computer programming. Come join us to hear words of wisdom from experienced professionals in the IT field, as well as successes from recent graduates who have broken into the software development industry. Anyone welcome. Join us for snacks and a good time.</string>
-
+    <string name="returning_user">Returning Member?</string>
+    <string name="returning_user_subtitle">Welcome back, we've missed you.</string>
+    <string name="log_in">Log In</string>
 </resources>

@@ -34,15 +34,14 @@
         android:id="@+id/collaborationImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="20dp"
-        android:paddingTop="130dp"
-        android:paddingBottom="100dp"
+        android:layout_marginBottom="10dp"
+        android:paddingTop="75dp"
+        android:paddingBottom="75dp"
         android:background="@color/colorWhite"
         android:src="@drawable/collaboration"
-        android:contentDescription="@string/collaboration"/>
+        android:contentDescription="@string/collaboration"
+        android:layout_below="@+id/toolbar" />
 
     <TextView
         android:id="@+id/titleTextView"
@@ -50,9 +49,9 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/collaborationImageView"
         android:layout_centerHorizontal="true"
-        android:paddingTop="60dp"
+        android:paddingTop="20dp"
         android:text="@string/app_name"
-        android:textSize="42sp"
+        android:textSize="36sp"
         android:textColor="@color/colorBlack" />
 
     <TextView
@@ -61,9 +60,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/collaborationImageView"
         android:layout_centerHorizontal="true"
-        android:paddingBottom="50dp"
+        android:paddingBottom="30dp"
         android:text="@string/subtitle"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textColor="@color/colorBlack" />
 
     <TextView
@@ -72,8 +71,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_below="@+id/collaborationImageView"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/new_user"
         android:textSize="24sp" />
 
@@ -83,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_below="@+id/newUserTextView"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/new_user_subtitle"
         android:textSize="14sp" />
 
@@ -94,6 +93,37 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/newUserSubtitleTextView"
         android:text="@string/sign_up"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite" />
+
+    <TextView
+        android:id="@+id/returningUserTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/signUpButton"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/returning_user"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/returningUserSubtitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/returningUserTextView"
+        android:layout_marginBottom="10dp"
+        android:text="@string/returning_user_subtitle"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/LogInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/returningUserSubtitleTextView"
+        android:text="@string/log_in"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite" />
 
