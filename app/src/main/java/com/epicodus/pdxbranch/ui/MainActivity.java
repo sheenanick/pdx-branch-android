@@ -1,5 +1,6 @@
 package com.epicodus.pdxbranch.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private ProgressDialog mAuthProgressDialog;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mSignUpTextView.setOnClickListener(this);
         mLogInButton.setOnClickListener(this);
+
+        createAuthProgressDialog();
     }
 
     @Override
@@ -67,6 +71,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mLogInButton) {
             logInWithPassword();
         }
+    }
+
+    public void createAuthProgressDialog() {
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading...");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
     }
 
     public void logInWithPassword() {
@@ -81,10 +92,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mPassword.setError("Password cannot be blank");
             return;
         }
+        mAuthProgressDialog.show();
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        mAuthProgressDialog.dismiss();
                         if (!task.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
                         }
