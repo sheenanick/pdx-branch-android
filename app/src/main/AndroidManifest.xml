@@ -47,7 +47,6 @@
                 android:value=".ui.GroupsActivity" />
         </activity>
         <activity android:name=".ui.CreateAccountActivity" />
-        <activity android:name=".ui.LogInActivity"></activity>
     </application>
 
 </manifest>

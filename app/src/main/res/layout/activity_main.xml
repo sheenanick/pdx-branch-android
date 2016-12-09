@@ -34,14 +34,14 @@
         android:id="@+id/collaborationImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:paddingTop="75dp"
         android:paddingBottom="75dp"
         android:background="@color/colorWhite"
         android:src="@drawable/collaboration"
-        android:contentDescription="@string/collaboration"
-        android:layout_below="@+id/toolbar" />
+        android:contentDescription="@string/collaboration" />
 
     <TextView
         android:id="@+id/titleTextView"
@@ -66,65 +66,49 @@
         android:textColor="@color/colorBlack" />
 
     <TextView
-        android:id="@+id/newUserTextView"
+        android:id="@+id/logInTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:text="@string/returning_user"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/collaborationImageView"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/new_user"
-        android:textSize="24sp" />
+        android:textSize="28sp"/>
 
-    <TextView
-        android:id="@+id/newUserSubtitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/newUserTextView"
-        android:layout_marginBottom="10dp"
-        android:text="@string/new_user_subtitle"
-        android:textSize="14sp" />
-
-    <Button
-        android:id="@+id/signUpButton"
+    <EditText
+        android:id="@+id/emailEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/newUserSubtitleTextView"
-        android:text="@string/sign_up"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorWhite" />
+        android:layout_below="@+id/logInTextView"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email_hint"/>
 
-    <TextView
-        android:id="@+id/returningUserTextView"
+    <EditText
+        android:id="@+id/passwordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/signUpButton"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/returning_user"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/returningUserSubtitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/returningUserTextView"
-        android:layout_marginBottom="10dp"
-        android:text="@string/returning_user_subtitle"
-        android:textSize="14sp" />
+        android:layout_below="@+id/emailEditText"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPassword"
+        android:hint="@string/password_hint"/>
 
     <Button
         android:id="@+id/logInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/returningUserSubtitleTextView"
+        android:layout_below="@+id/passwordEditText"
         android:text="@string/log_in"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite" />
+
+    <TextView
+        android:id="@+id/signUpTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logInButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/new_user"/>
 
 </RelativeLayout>

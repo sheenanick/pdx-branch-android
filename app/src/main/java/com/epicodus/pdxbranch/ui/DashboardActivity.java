@@ -80,7 +80,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_sign_out:
+            case R.id.action_log_out:
                 logout();
                 return true;
 
