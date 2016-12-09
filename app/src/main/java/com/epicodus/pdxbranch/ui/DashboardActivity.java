@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -80,9 +81,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sign_out:
-                // Until Sign in/out functionality is implemented simply reroute to MainActivity
-                Intent signOutIntent = new Intent(DashboardActivity.this, MainActivity.class);
-                startActivity(signOutIntent);
+                logout();
                 return true;
 
             case R.id.action_groups:
@@ -99,5 +98,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

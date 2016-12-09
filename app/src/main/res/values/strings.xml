@@ -18,7 +18,7 @@
     <string name="post_hint">What are you thinking?</string>
     <string name="placeholder">Placeholder Text</string>
     <string name="action_profile">Profile</string>
-    <string name="action_sign_out">Sign Out</string>
+    <string name="action_log_out">Log Out</string>
     <string name="action_groups">Groups</string>
     <string name="profile_placeholder">Your profile! Coming soon...</string>
     <string name="group_name">Tech Academy Portland Meetup</string>
