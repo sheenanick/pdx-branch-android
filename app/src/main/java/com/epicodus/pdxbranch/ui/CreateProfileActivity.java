@@ -15,7 +15,7 @@ import com.epicodus.pdxbranch.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
+public class CreateProfileActivity extends AppCompatActivity implements View.OnClickListener{
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.firstNameEditText) EditText mFirstNameEditText;
     @Bind(R.id.lastNameEditText) EditText mLastNameEditText;
@@ -28,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_create_profile);
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
@@ -50,26 +50,26 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
             if (first_name.equals("") || last_name.equals("") || screen_name.equals("") || city.equals("") || state.equals("") || zip_code.equals("")) {
                 if (first_name.equals("")) {
-                    mFirstNameEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                    mFirstNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
                 if (last_name.equals("")) {
-                    mLastNameEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                    mLastNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
                 if (screen_name.equals("")) {
-                    mScreenNameEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                    mScreenNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
                 if (city.equals("")) {
-                    mCityEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                    mCityEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
                 if (state.equals("")) {
-                    mStateEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                    mStateEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
                 if (zip_code.equals("")) {
-                    mZipCodeEditText.setHintTextColor(ContextCompat.getColor(SignUpActivity.this, R.color.colorAccent));
+                    mZipCodeEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
-                Toast.makeText(SignUpActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
+                Toast.makeText(CreateProfileActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
             } else {
-                Intent intent = new Intent(SignUpActivity.this, DashboardActivity.class);
+                Intent intent = new Intent(CreateProfileActivity.this, DashboardActivity.class);
                 intent.putExtra("first_name", first_name);
                 intent.putExtra("last_name", last_name);
                 intent.putExtra("screen_name", screen_name);
