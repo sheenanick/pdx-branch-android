@@ -70,13 +70,9 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                 Toast.makeText(CreateProfileActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
             } else {
                 Intent intent = new Intent(CreateProfileActivity.this, DashboardActivity.class);
-                intent.putExtra("first_name", first_name);
-                intent.putExtra("last_name", last_name);
-                intent.putExtra("screen_name", screen_name);
-                intent.putExtra("city", city);
-                intent.putExtra("state", state);
-                intent.putExtra("zip_code", zip_code);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
             }
         }
     }
