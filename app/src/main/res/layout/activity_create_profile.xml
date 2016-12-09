@@ -73,7 +73,7 @@
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/avatarEditText"
+        android:id="@+id/profileImageUrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/zipCodeEditText"
@@ -87,7 +87,7 @@
         android:text="@string/sign_up"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
-        android:layout_below="@+id/avatarEditText"
+        android:layout_below="@+id/profileImageUrl"
         android:layout_marginTop="60dp" />
 
 </RelativeLayout>

@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
+import com.epicodus.pdxbranch.models.Member;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,9 +23,8 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.firstNameEditText) EditText mFirstNameEditText;
     @Bind(R.id.lastNameEditText) EditText mLastNameEditText;
     @Bind(R.id.screenNameEditText) EditText mScreenNameEditText;
-    @Bind(R.id.cityEditText) EditText mCityEditText;
-    @Bind(R.id.stateEditText) EditText mStateEditText;
     @Bind(R.id.zipCodeEditText) EditText mZipCodeEditText;
+    @Bind(R.id.profileImageUrl) EditText mProfileImageUrl;
     @Bind(R.id.submitButton) Button mSubmitButton;
 
     @Override
@@ -41,34 +43,31 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         if (v == mSubmitButton) {
-            String first_name = mFirstNameEditText.getText().toString();
-            String last_name = mLastNameEditText.getText().toString();
-            String screen_name = mScreenNameEditText.getText().toString();
-            String city = mCityEditText.getText().toString();
-            String state = mStateEditText.getText().toString();
-            String zip_code =mZipCodeEditText.getText().toString();
+            String firstName = mFirstNameEditText.getText().toString();
+            String lastName = mLastNameEditText.getText().toString();
+            String screenName = mScreenNameEditText.getText().toString();
+            String zipCode =mZipCodeEditText.getText().toString();
+            String profileImageUrl =mProfileImageUrl.getText().toString();
 
-            if (first_name.equals("") || last_name.equals("") || screen_name.equals("") || city.equals("") || state.equals("") || zip_code.equals("")) {
-                if (first_name.equals("")) {
+            if (firstName.equals("") || lastName.equals("") || screenName.equals("") || zipCode.equals("")) {
+                if (firstName.equals("")) {
                     mFirstNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
-                if (last_name.equals("")) {
+                if (lastName.equals("")) {
                     mLastNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
-                if (screen_name.equals("")) {
+                if (screenName.equals("")) {
                     mScreenNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
-                if (city.equals("")) {
-                    mCityEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
-                }
-                if (state.equals("")) {
-                    mStateEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
-                }
-                if (zip_code.equals("")) {
+                if (zipCode.equals("")) {
                     mZipCodeEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
                 }
                 Toast.makeText(CreateProfileActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
             } else {
+                Member member = new Member(firstName, lastName, screenName, zipCode, profileImageUrl);
+                DatabaseReference memberRef = FirebaseDatabase.getInstance().getReference("members");
+                memberRef.push().setValue(member);
+
                 Intent intent = new Intent(CreateProfileActivity.this, DashboardActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
