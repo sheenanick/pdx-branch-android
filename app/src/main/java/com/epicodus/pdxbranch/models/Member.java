@@ -11,15 +11,17 @@ public class Member {
     private String lastName;
     private String screenName;
     private String zipCode;
+    private String profileImageUrl;
     private List<Member> friends = new ArrayList<Member>();
 
     public Member() {}
 
-    public Member(String firstName, String lastName, String screenName, String zipCode) {
+    public Member(String firstName, String lastName, String screenName, String zipCode, String profileImageUrl) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.screenName = screenName;
         this.zipCode = zipCode;
+        this.profileImageUrl = profileImageUrl;
     }
 
     public String getFirstName() {
@@ -36,6 +38,10 @@ public class Member {
 
     public String getZipCode() {
         return zipCode;
+    }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
     }
 
     public List<Member> getFriends() {
