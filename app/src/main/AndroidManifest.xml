@@ -46,6 +46,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.GroupsActivity" />
         </activity>
+        <activity android:name=".ui.CreateAccountActivity"></activity>
     </application>
 
 </manifest>

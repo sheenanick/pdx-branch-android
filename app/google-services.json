@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "806614572504",
+    "firebase_url": "https://pdx-branch.firebaseio.com",
+    "project_id": "pdx-branch",
+    "storage_bucket": "pdx-branch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806614572504:android:871c8130ce6c6142",
+        "android_client_info": {
+          "package_name": "com.epicodus.pdxbranch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806614572504-vpiso2tt4j9q9ugss1hiprkean07t6jj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.epicodus.pdxbranch",
+            "certificate_hash": "764C05BAAB5A84667A8145033A92738CD765EDB5"
+          }
+        },
+        {
+          "client_id": "806614572504-t2ckdv3jf7t3bf5efenahh5irjaii5od.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo5f-fofIlZT3ugC1LdFkZGKcambnMiO0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806614572504-t2ckdv3jf7t3bf5efenahh5irjaii5od.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
