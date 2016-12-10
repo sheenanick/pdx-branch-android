@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -30,14 +31,43 @@
             android:src="@drawable/logo"/>
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/profilePlaceholderTextView"
+    <ImageView
+        android:id="@+id/profileImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:src="@drawable/avatar"
+        android:layout_below="@+id/toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="@string/profile_placeholder"
-        android:textSize="24sp" />
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/memberNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="User Name"
+        android:textSize="24sp"
+        android:layout_below="@+id/profileImageView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/screenNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="Screen Name"
+        android:textSize="18sp"
+        android:layout_below="@+id/memberNameTextView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/zipCodeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="Zip Code"
+        android:textSize="18sp"
+        android:layout_below="@+id/screenNameTextView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

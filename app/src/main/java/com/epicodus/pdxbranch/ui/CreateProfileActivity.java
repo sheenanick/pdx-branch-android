@@ -1,6 +1,8 @@
 package com.epicodus.pdxbranch.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,7 +30,9 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.profileImageUrl) EditText mProfileImageUrl;
     @Bind(R.id.submitButton) Button mSubmitButton;
 
-    @Override
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile);
@@ -37,6 +41,9 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
 
         mSubmitButton.setOnClickListener(this);
     }
@@ -67,8 +74,15 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
             } else {
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Member member = new Member(firstName, lastName, screenName, zipCode, profileImageUrl);
+
                 DatabaseReference memberRef = FirebaseDatabase.getInstance().getReference("members").child(uid);
-                memberRef.push().setValue(member);
+
+                DatabaseReference pushRef = memberRef.push();
+                String pushId = pushRef.getKey();
+                member.setPushId(pushId);
+                pushRef.setValue(member);
+
+                addToSharedPreferences(pushId);
 
                 Intent intent = new Intent(CreateProfileActivity.this, DashboardActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -76,5 +90,9 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                 finish();
             }
         }
+    }
+
+    private void addToSharedPreferences(String pushId) {
+        mEditor.putString("pushId", pushId).apply();
     }
 }

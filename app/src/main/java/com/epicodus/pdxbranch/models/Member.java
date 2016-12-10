@@ -12,6 +12,7 @@ public class Member {
     private String screenName;
     private String zipCode;
     private String profileImageUrl;
+    private String pushId;
     private List<Member> friends = new ArrayList<Member>();
 
     public Member() {}
@@ -46,5 +47,13 @@ public class Member {
 
     public List<Member> getFriends() {
         return friends;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 }
