@@ -42,9 +42,13 @@
 
     <EditText
         android:id="@+id/firstNameEditText"
-        android:layout_width="match_parent"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titleTextView"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorWhite"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
         android:hint="@string/first_name"
         android:inputType="text" />
 
@@ -54,7 +58,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/firstNameEditText"
         android:hint="@string/last_name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@color/colorWhite"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignLeft="@+id/firstNameEditText"
+        android:layout_alignStart="@+id/firstNameEditText"
+        android:layout_alignRight="@+id/firstNameEditText"
+        android:layout_alignEnd="@+id/firstNameEditText" />
 
     <EditText
         android:id="@+id/screenNameEditText"
@@ -62,7 +73,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/lastNameEditText"
         android:hint="@string/screen_name"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@color/colorWhite"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignLeft="@+id/lastNameEditText"
+        android:layout_alignStart="@+id/lastNameEditText"
+        android:layout_alignRight="@+id/lastNameEditText"
+        android:layout_alignEnd="@+id/lastNameEditText" />
 
     <EditText
         android:id="@+id/zipCodeEditText"
@@ -70,7 +88,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/screenNameEditText"
         android:hint="@string/zip_code"
-        android:inputType="number" />
+        android:inputType="number"
+        android:background="@color/colorWhite"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignLeft="@+id/screenNameEditText"
+        android:layout_alignStart="@+id/screenNameEditText"
+        android:layout_alignRight="@+id/screenNameEditText"
+        android:layout_alignEnd="@+id/screenNameEditText" />
 
     <EditText
         android:id="@+id/profileImageUrl"
@@ -78,7 +103,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/zipCodeEditText"
         android:hint="@string/avatar"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@color/colorWhite"
+        android:padding="5dp"
+        android:layout_alignLeft="@+id/zipCodeEditText"
+        android:layout_alignStart="@+id/zipCodeEditText"
+        android:layout_alignRight="@+id/zipCodeEditText"
+        android:layout_alignEnd="@+id/zipCodeEditText" />
 
     <Button
         android:id="@+id/submitButton"
@@ -88,6 +119,10 @@
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
         android:layout_below="@+id/profileImageUrl"
-        android:layout_marginTop="60dp" />
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/profileImageUrl"
+        android:layout_alignStart="@+id/profileImageUrl"
+        android:layout_alignRight="@+id/profileImageUrl"
+        android:layout_alignEnd="@+id/profileImageUrl" />
 
 </RelativeLayout>
