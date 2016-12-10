@@ -2,16 +2,16 @@
   <img src="https://raw.githubusercontent.com/mlawson3691/branch-social/master/public/assets/images/logo-black.png">
 </p>
 
-#### _Epicodus Android Week 1 Independent Project, 11.18.2016_
+#### _Epicodus Android Week 1 Independent Project, 12.09.2016_
 
 #### By Sheena Nickerson
 
 This is an Android application for pdxBranch - a networking site for developers in the Portland, Oregon area.
 
 This project is still a work in progress and the following features are not yet implemented:
-* Firebase user authentication (Sign in/out functionality)
-* Firebase data storage of user data (profile information, posts, etc.)
-* ProfileActivity content
+* Adding friends
+* Adding comments to posts
+* Adding timestamps to posts and comments
 
 ## Prerequisites
 
