@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.models.Member;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -64,8 +65,9 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                 }
                 Toast.makeText(CreateProfileActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
             } else {
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Member member = new Member(firstName, lastName, screenName, zipCode, profileImageUrl);
-                DatabaseReference memberRef = FirebaseDatabase.getInstance().getReference("members");
+                DatabaseReference memberRef = FirebaseDatabase.getInstance().getReference("members").child(uid);
                 memberRef.push().setValue(member);
 
                 Intent intent = new Intent(CreateProfileActivity.this, DashboardActivity.class);
