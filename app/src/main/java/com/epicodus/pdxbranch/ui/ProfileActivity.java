@@ -1,7 +1,5 @@
 package com.epicodus.pdxbranch.ui;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,13 +21,10 @@ import butterknife.ButterKnife;
 
 public class ProfileActivity extends AppCompatActivity {
     @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.profileImageUrl) ImageView mProfileImageView;
+    @Bind(R.id.profileImageView) ImageView mProfileImageView;
     @Bind(R.id.memberNameTextView) TextView mMemberNameTextView;
     @Bind(R.id.screenNameTextView) TextView mScreenNameTextView;
     @Bind(R.id.zipCodeTextView) TextView mZipCodeTextView;
-
-    private SharedPreferences mSharedPreferences;
-    private String mPushId;
 
     private DatabaseReference mCurrentMemberReference;
     private ValueEventListener mCurrentMemberReferenceListener;
@@ -40,11 +35,8 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mPushId = mSharedPreferences.getString("pushId", null);
-
         final String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(currentUserId).child(mPushId);
+        mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(currentUserId);
 
         mCurrentMemberReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -66,5 +58,4 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-//
 }

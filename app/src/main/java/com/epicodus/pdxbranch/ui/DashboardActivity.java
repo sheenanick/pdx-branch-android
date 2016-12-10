@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,7 +31,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Bind(R.id.postButton) Button mPostButton;
     @Bind(R.id.newsFeedListView) ListView mNewsFeedListView;
     ArrayList<String> posts = new ArrayList<>();
-    String first_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +43,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         mPostButton.setOnClickListener(this);
 
-        Intent intent = getIntent();
-        first_name = intent.getStringExtra("first_name");
-        String greeting;
-        if (first_name == null) {
-            greeting = "Welcome to pdxBranch";
-        } else {
-            greeting = "Welcome to pdxBranch, " + first_name;
-        }
+        String greeting = "Welcome to pdxBranch";
         mGreetingTextView.setText(greeting);
     }
 
@@ -91,7 +84,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.action_profile:
                 Intent profileIntent = new Intent(DashboardActivity.this, ProfileActivity.class);
-                profileIntent.putExtra("first_name", first_name);
                 startActivity(profileIntent);
                 return true;
 

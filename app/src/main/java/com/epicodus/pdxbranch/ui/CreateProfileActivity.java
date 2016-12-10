@@ -1,12 +1,11 @@
 package com.epicodus.pdxbranch.ui;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.models.Member;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,6 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class CreateProfileActivity extends AppCompatActivity implements View.OnClickListener{
+    public static final String TAG = CreateProfileActivity.class.getSimpleName();
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.firstNameEditText) EditText mFirstNameEditText;
     @Bind(R.id.lastNameEditText) EditText mLastNameEditText;
@@ -29,9 +30,6 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
     @Bind(R.id.zipCodeEditText) EditText mZipCodeEditText;
     @Bind(R.id.profileImageUrl) EditText mProfileImageUrl;
     @Bind(R.id.submitButton) Button mSubmitButton;
-
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +39,6 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mSharedPreferences.edit();
 
         mSubmitButton.setOnClickListener(this);
     }
@@ -72,17 +67,12 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                 }
                 Toast.makeText(CreateProfileActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
             } else {
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Member member = new Member(firstName, lastName, screenName, zipCode, profileImageUrl);
 
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String uid = user.getUid();
                 DatabaseReference memberRef = FirebaseDatabase.getInstance().getReference("members").child(uid);
-
-                DatabaseReference pushRef = memberRef.push();
-                String pushId = pushRef.getKey();
-                member.setPushId(pushId);
-                pushRef.setValue(member);
-
-                addToSharedPreferences(pushId);
+                memberRef.setValue(member);
 
                 Intent intent = new Intent(CreateProfileActivity.this, DashboardActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -90,9 +80,5 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                 finish();
             }
         }
-    }
-
-    private void addToSharedPreferences(String pushId) {
-        mEditor.putString("pushId", pushId).apply();
     }
 }
