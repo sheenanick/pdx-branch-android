@@ -14,6 +14,7 @@ public class Member {
     private String profileImageUrl;
     private String pushId;
     private List<Member> friends = new ArrayList<Member>();
+    private List<Post> posts = new ArrayList<>();
 
     public Member() {}
 
@@ -55,5 +56,9 @@ public class Member {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 }
