@@ -12,6 +12,10 @@ This project is still a work in progress and the following features are not yet 
 * Adding friends
 * Adding comments to posts
 * Adding timestamps to posts and comments
+* Sorting the newsfeed in reverse chronological order
+* Creating groups
+* Being able to view profiles of other members
+* Option to log in with GitHub
 
 ## Prerequisites
 
