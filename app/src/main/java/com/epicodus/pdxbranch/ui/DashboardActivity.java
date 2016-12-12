@@ -1,6 +1,8 @@
 package com.epicodus.pdxbranch.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -16,9 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
-import com.epicodus.pdxbranch.models.Member;
 import com.epicodus.pdxbranch.models.Post;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,13 +36,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Bind(R.id.greetingTextView) TextView mGreetingTextView;
     @Bind(R.id.addPostEditText) EditText mAddPostEditText;
     @Bind(R.id.postButton) Button mPostButton;
-    private DatabaseReference mCurrentMemberReference;
-    private DatabaseReference mPostsReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
-    private Member mCurrentMember;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+
     private String mFirstName;
     private String mLastName;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private DatabaseReference mCurrentMemberReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +50,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-        String greeting = "Welcome to pdxBranch";
-        mGreetingTextView.setText(greeting);
 
         mPostButton.setOnClickListener(this);
 
@@ -66,6 +61,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
                 mFirstName = (String) map.get("firstName");
                 mLastName = (String) map.get("lastName");
+                String greeting = "Welcome to pdxBranch, " + mFirstName;
+                mGreetingTextView.setText(greeting);
             }
 
             @Override
@@ -73,7 +70,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
-
     }
 
     @Override
