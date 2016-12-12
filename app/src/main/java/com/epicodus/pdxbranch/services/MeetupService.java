@@ -64,7 +64,7 @@ public class MeetupService {
                     JSONObject groupPhoto = meetupGroupJSON.optJSONObject("group_photo");
                     String groupPhotoLink;
                     if (groupPhoto != null) {
-                        groupPhotoLink = groupPhoto.getString("highres_link");
+                        groupPhotoLink = groupPhoto.getString("photo_link");
                     } else {
                         groupPhotoLink = "http://www.pngall.com/wp-content/uploads/2016/05/Branch-Free-Download-PNG.png";
                     }
