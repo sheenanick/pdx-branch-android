@@ -4,12 +4,10 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.epicodus.pdxbranch.R;
-import com.epicodus.pdxbranch.models.Member;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,9 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
     private Context mContext = this;
-
     private DatabaseReference mCurrentMemberReference;
-    private ValueEventListener mCurrentMemberReferenceListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +41,6 @@ public class ProfileActivity extends AppCompatActivity {
 
         final String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(currentUserId);
-
         mCurrentMemberReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -65,12 +60,9 @@ public class ProfileActivity extends AppCompatActivity {
                         .centerCrop()
                         .into(mProfileImageView);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
     }
-
 }
