@@ -3,23 +3,25 @@ package com.epicodus.pdxbranch.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
+import com.epicodus.pdxbranch.models.Member;
+import com.epicodus.pdxbranch.models.Post;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,8 +31,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Bind(R.id.greetingTextView) TextView mGreetingTextView;
     @Bind(R.id.addPostEditText) EditText mAddPostEditText;
     @Bind(R.id.postButton) Button mPostButton;
-    @Bind(R.id.newsFeedListView) ListView mNewsFeedListView;
-    ArrayList<String> posts = new ArrayList<>();
+    private DatabaseReference mCurrentMemberReference;
+    private DatabaseReference mPostsReference;
+    private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private Member mCurrentMember;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +46,29 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        mPostButton.setOnClickListener(this);
-
         String greeting = "Welcome to pdxBranch";
         mGreetingTextView.setText(greeting);
+
+        mPostButton.setOnClickListener(this);
+
+        final String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(currentUserId);
     }
 
     @Override
     public void onClick(View v) {
         if (v == mPostButton) {
-            String post = mAddPostEditText.getText().toString();
-            if (post.equals("")) {
+            String content = mAddPostEditText.getText().toString().trim();
+
+            if (content.equals("")) {
                 Toast.makeText(DashboardActivity.this, "Enter something to post!", Toast.LENGTH_SHORT).show();
             } else {
-                posts.add(0, post);
-                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, posts);
-                mNewsFeedListView.setAdapter(adapter);
+                DatabaseReference pushRef = mCurrentMemberReference.child("posts").push();
+                String pushId = pushRef.getKey();
+                Post post = new Post(content, pushId);
+                pushRef.setValue(post);
                 mAddPostEditText.setText("");
             }
-
         }
     }
 
