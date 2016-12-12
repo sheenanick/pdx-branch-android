@@ -49,8 +49,8 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
             String firstName = mFirstNameEditText.getText().toString();
             String lastName = mLastNameEditText.getText().toString();
             String screenName = mScreenNameEditText.getText().toString();
-            String zipCode =mZipCodeEditText.getText().toString();
-            String profileImageUrl =mProfileImageUrl.getText().toString();
+            String zipCode = mZipCodeEditText.getText().toString();
+            String profileImageUrl = mProfileImageUrl.getText().toString();
 
             if (firstName.equals("") || lastName.equals("") || screenName.equals("") || zipCode.equals("")) {
                 if (firstName.equals("")) {
@@ -69,8 +69,10 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
             } else {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
-                Member member = new Member(firstName, lastName, screenName, zipCode, profileImageUrl, uid);
-
+                Member member = new Member(firstName, lastName, screenName, zipCode, uid);
+                if (!profileImageUrl.equals("")) {
+                    member.setProfileImageUrl(profileImageUrl);
+                }
                 DatabaseReference memberRef = FirebaseDatabase.getInstance().getReference("members").child(uid);
                 memberRef.setValue(member);
 
