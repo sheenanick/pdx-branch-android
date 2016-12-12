@@ -41,6 +41,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     private String mFirstName;
     private String mLastName;
+    private String mUserImageUrl;
     private DatabaseReference mCurrentMemberReference;
     private DatabaseReference mPostReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
@@ -64,6 +65,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
                 mFirstName = (String) map.get("firstName");
                 mLastName = (String) map.get("lastName");
+                mUserImageUrl = (String) map.get("profileImageUrl");
                 String greeting = "Welcome to pdxBranch, " + mFirstName;
                 mGreetingTextView.setText(greeting);
             }
@@ -110,7 +112,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 DatabaseReference pushRef = mCurrentMemberReference.child("posts").push();
                 String pushId = pushRef.getKey();
                 String author = mFirstName + " " + mLastName;
-                Post post = new Post(author, content, pushId);
+                Post post = new Post(author, mUserImageUrl, content, pushId);
                 pushRef.setValue(post);
                 mAddPostEditText.setText("");
             }

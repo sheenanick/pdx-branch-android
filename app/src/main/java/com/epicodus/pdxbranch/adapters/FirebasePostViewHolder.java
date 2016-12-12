@@ -8,8 +8,11 @@ import android.widget.TextView;
 
 import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.models.Post;
+import com.squareup.picasso.Picasso;
 
 public class FirebasePostViewHolder extends RecyclerView.ViewHolder{
+    private static final int MAX_WIDTH = 100;
+    private static final int MAX_HEIGHT = 100;
     View mView;
     Context mContext;
 
@@ -26,7 +29,10 @@ public class FirebasePostViewHolder extends RecyclerView.ViewHolder{
 
         userNameTextView.setText(post.getAuthor());
         contentTextView.setText(post.getContent());
+        Picasso.with(mContext)
+                .load(post.getAuthorImageUrl())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerCrop()
+                .into(memberProfileImageView);
     }
-
-
 }
