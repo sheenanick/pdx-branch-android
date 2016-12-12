@@ -68,12 +68,14 @@ public class MeetupService {
                     } else {
                         groupPhotoLink = "http://www.pngall.com/wp-content/uploads/2016/05/Branch-Free-Download-PNG.png";
                     }
-
-                    JSONArray photosJSON = meetupGroupJSON.getJSONArray("photos");
+                    JSONArray photosJSON = meetupGroupJSON.optJSONArray("photos");
                     ArrayList<String> photos = new ArrayList<>();
-                    for (int j = 0; j < photosJSON.length(); j++) {
-                        String photoLink = photosJSON.getJSONObject(j).getString("thumb_link");
-                        photos.add(photoLink);
+                    if (photosJSON != null) {
+                        for (int j = 0; j < photosJSON.length(); j++) {
+                            String photoLink = photosJSON.getJSONObject(j).getString("thumb_link");
+                            photos.add(photoLink);
+                        }
+
                     }
 
                     MeetupGroup meetupGroup = new MeetupGroup(name, link, description, date, members, organizerName, organizerPhotoLink, groupPhotoLink, photos);
