@@ -14,7 +14,7 @@
     <string name="thinking">Thinking Icon</string>
     <string name="post">Post</string>
     <string name="post_hint">What are you thinking?</string>
-    <string name="placeholder">Placeholder Text</string>
+    <string name="greeting">Welcome to pdxBranch</string>
     <string name="action_profile">Profile</string>
     <string name="action_log_out">Log Out</string>
     <string name="action_groups">Groups</string>
