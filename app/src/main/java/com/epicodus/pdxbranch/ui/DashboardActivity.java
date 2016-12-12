@@ -3,6 +3,7 @@ package com.epicodus.pdxbranch.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -16,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
+import com.epicodus.pdxbranch.adapters.FirebasePostViewHolder;
 import com.epicodus.pdxbranch.models.Post;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +42,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private String mFirstName;
     private String mLastName;
     private DatabaseReference mCurrentMemberReference;
+    private DatabaseReference mPostReference;
+    private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +73,30 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
+        mPostReference = mCurrentMemberReference.child("posts");
+        setUpFirebaseAdapter();
+    }
+
+    private void setUpFirebaseAdapter() {
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Post, FirebasePostViewHolder>
+                (Post.class, R.layout.post_list_item, FirebasePostViewHolder.class,
+                        mPostReference) {
+
+            @Override
+            protected void populateViewHolder(FirebasePostViewHolder viewHolder,
+                                              Post model, int position) {
+                viewHolder.bindPost(model);
+            }
+        };
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mFirebaseAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mFirebaseAdapter.cleanup();
     }
 
     @Override
