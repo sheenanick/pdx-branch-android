@@ -39,6 +39,10 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
 
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         final String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(currentUserId);
         mCurrentMemberReference.addValueEventListener(new ValueEventListener() {
