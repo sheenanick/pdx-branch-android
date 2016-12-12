@@ -54,11 +54,14 @@
 
     <EditText
         android:id="@+id/passwordEditText"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailEditText"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
+        android:layout_alignLeft="@+id/emailEditText"
+        android:layout_alignStart="@+id/emailEditText"
+        android:layout_alignRight="@+id/emailEditText"
+        android:layout_alignEnd="@+id/emailEditText"
         android:padding="5dp"
         android:background="@color/colorWhite"
         android:inputType="textPassword"
@@ -66,10 +69,13 @@
 
     <EditText
         android:id="@+id/confirmPasswordEditText"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordEditText"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/passwordEditText"
+        android:layout_alignStart="@+id/passwordEditText"
+        android:layout_alignRight="@+id/passwordEditText"
+        android:layout_alignEnd="@+id/passwordEditText"
         android:padding="5dp"
         android:background="@color/colorWhite"
         android:inputType="textPassword"
@@ -81,12 +87,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/confirmPasswordEditText"
         android:layout_marginTop="20dp"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorWhite"
-        android:text="Submit"
         android:layout_alignLeft="@+id/confirmPasswordEditText"
         android:layout_alignStart="@+id/confirmPasswordEditText"
         android:layout_alignRight="@+id/confirmPasswordEditText"
-        android:layout_alignEnd="@+id/confirmPasswordEditText" />
+        android:layout_alignEnd="@+id/confirmPasswordEditText"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite"
+        android:text="Submit" />
 
 </RelativeLayout>
