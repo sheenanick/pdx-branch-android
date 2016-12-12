@@ -13,17 +13,17 @@ public class Member {
     private String zipCode;
     private String profileImageUrl;
     private String pushId;
-    private List<Member> friends = new ArrayList<Member>();
     private List<Post> posts = new ArrayList<>();
 
     public Member() {}
 
-    public Member(String firstName, String lastName, String screenName, String zipCode, String profileImageUrl) {
+    public Member(String firstName, String lastName, String screenName, String zipCode, String profileImageUrl, String uid) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.screenName = screenName;
         this.zipCode = zipCode;
         this.profileImageUrl = profileImageUrl;
+        this.pushId = uid;
     }
 
     public String getFirstName() {
@@ -46,16 +46,8 @@ public class Member {
         return profileImageUrl;
     }
 
-    public List<Member> getFriends() {
-        return friends;
-    }
-
     public String getPushId() {
         return pushId;
-    }
-
-    public void setPushId(String pushId) {
-        this.pushId = pushId;
     }
 
     public List<Post> getPosts() {
