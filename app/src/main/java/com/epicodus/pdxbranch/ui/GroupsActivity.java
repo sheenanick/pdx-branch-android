@@ -1,11 +1,19 @@
 package com.epicodus.pdxbranch.ui;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import com.epicodus.pdxbranch.Constants;
 import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.adapters.MeetupGroupAdapter;
 import com.epicodus.pdxbranch.models.MeetupGroup;
@@ -23,8 +31,13 @@ import okhttp3.Response;
 public class GroupsActivity extends AppCompatActivity {
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+
     private MeetupGroupAdapter mAdapter;
     public ArrayList<MeetupGroup> mMeetupGroups = new ArrayList<>();
+
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private String mRecentSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +49,55 @@ public class GroupsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getRecommendedGroups();
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentSearch = mSharedPreferences.getString(Constants.PREFERENCES_SEARCH_KEY, null);
+
+        findMeetupGroups(mRecentSearch);
     }
 
-    private void getRecommendedGroups() {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.searchbar_menu, menu);
+        ButterKnife.bind(this);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                addToSharedPreferences(query);
+                findMeetupGroups(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void addToSharedPreferences(String search) {
+        mEditor.putString(Constants.PREFERENCES_SEARCH_KEY, search).apply();
+    }
+
+    private void findMeetupGroups(String query) {
         final MeetupService meetupService = new MeetupService();
-        meetupService.findRecommendedGroups(new Callback() {
+        meetupService.findRecommendedGroups(query, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -59,7 +115,6 @@ public class GroupsActivity extends AppCompatActivity {
                         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GroupsActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
-
                     }
                 });
             }
