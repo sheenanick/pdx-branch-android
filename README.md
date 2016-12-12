@@ -44,6 +44,6 @@ See the GitHub repository for pdxBranch built in Ember [here](https://github.com
 
 ### License
 
-Licensed under GPL.
+This software is licensed under the MIT license.
 
 Copyright (c) 2016 **_Sheena Nickerson_**
