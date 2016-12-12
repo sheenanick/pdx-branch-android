@@ -4,27 +4,21 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Post {
-    private Member author;
-    private Member recipient;
     private String content;
+    private String pushId;
 
     public Post() {}
 
-    public Post(Member author, Member recipient, String content) {
-        this.author = author;
-        this.recipient = recipient;
+    public Post(String content, String uid) {
         this.content = content;
-    }
-
-    public Member getAuthor() {
-        return author;
-    }
-
-    public Member getRecipient() {
-        return recipient;
+        this.pushId = uid;
     }
 
     public String getContent() {
         return content;
+    }
+
+    public String getPushId() {
+        return pushId;
     }
 }
