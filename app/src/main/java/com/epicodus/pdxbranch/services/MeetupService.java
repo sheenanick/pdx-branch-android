@@ -22,10 +22,13 @@ import okhttp3.Response;
 
 public class MeetupService {
 
-    public static void findRecommendedGroups(Callback callback) {
+    public static void findRecommendedGroups(String query, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder().build();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.MEETUP_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.MEETUP_API_KEY_PARAMETER, Constants.MEETUP_API_KEY);
+        if (query != null) {
+            urlBuilder.addQueryParameter(Constants.PREFERENCES_SEARCH_KEY, query);
+        }
         String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder().url(url).build();
