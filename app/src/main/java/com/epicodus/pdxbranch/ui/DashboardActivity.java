@@ -20,8 +20,13 @@ import com.epicodus.pdxbranch.models.Member;
 import com.epicodus.pdxbranch.models.Post;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,6 +40,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private DatabaseReference mPostsReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
     private Member mCurrentMember;
+    private String mFirstName;
+    private String mLastName;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     @Override
@@ -53,6 +60,20 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         final String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(currentUserId);
+        mCurrentMemberReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
+                mFirstName = (String) map.get("firstName");
+                mLastName = (String) map.get("lastName");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
@@ -65,7 +86,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             } else {
                 DatabaseReference pushRef = mCurrentMemberReference.child("posts").push();
                 String pushId = pushRef.getKey();
-                Post post = new Post(content, pushId);
+                String author = mFirstName + " " + mLastName;
+                Post post = new Post(author, content, pushId);
                 pushRef.setValue(post);
                 mAddPostEditText.setText("");
             }
