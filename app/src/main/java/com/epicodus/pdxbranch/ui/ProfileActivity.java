@@ -1,5 +1,6 @@
 package com.epicodus.pdxbranch.ui;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -25,6 +29,10 @@ public class ProfileActivity extends AppCompatActivity {
     @Bind(R.id.memberNameTextView) TextView mMemberNameTextView;
     @Bind(R.id.screenNameTextView) TextView mScreenNameTextView;
     @Bind(R.id.zipCodeTextView) TextView mZipCodeTextView;
+
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+    private Context mContext = this;
 
     private DatabaseReference mCurrentMemberReference;
     private ValueEventListener mCurrentMemberReferenceListener;
@@ -41,14 +49,21 @@ public class ProfileActivity extends AppCompatActivity {
         mCurrentMemberReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Member currentUser = dataSnapshot.getValue(Member.class);
-                String firstName = currentUser.getFirstName();
-                String lastName = currentUser.getLastName();
+                Map<String, Object> map = (Map<String, Object>) dataSnapshot.getValue();
+                String firstName = (String) map.get("firstName");
+                String lastName = (String) map.get("lastName");
                 String name = firstName + " " + lastName;
-                String imageUrl = currentUser.getProfileImageUrl();
+                String screenName = (String) map.get("screenName");
+                String imageUrl = (String) map.get("profileImageUrl");
+                String zipCode = (String) map.get("zipCode");
                 mMemberNameTextView.setText(name);
-                mScreenNameTextView.setText("(" + currentUser.getScreenName() + ")");
-                mZipCodeTextView.setText(currentUser.getZipCode());
+                mScreenNameTextView.setText("(" + screenName + ")");
+                mZipCodeTextView.setText(zipCode);
+                Picasso.with(mContext)
+                        .load(imageUrl)
+                        .resize(MAX_WIDTH, MAX_HEIGHT)
+                        .centerCrop()
+                        .into(mProfileImageView);
             }
 
             @Override
