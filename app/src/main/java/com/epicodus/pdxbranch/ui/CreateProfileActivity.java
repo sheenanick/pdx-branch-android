@@ -67,10 +67,10 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                 }
                 Toast.makeText(CreateProfileActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
             } else {
-                Member member = new Member(firstName, lastName, screenName, zipCode, profileImageUrl);
-
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 String uid = user.getUid();
+                Member member = new Member(firstName, lastName, screenName, zipCode, profileImageUrl, uid);
+
                 DatabaseReference memberRef = FirebaseDatabase.getInstance().getReference("members").child(uid);
                 memberRef.setValue(member);
 
