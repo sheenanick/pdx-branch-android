@@ -9,9 +9,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.epicodus.pdxbranch.Constants;
 import com.epicodus.pdxbranch.R;
@@ -31,6 +34,7 @@ import okhttp3.Response;
 public class GroupsActivity extends AppCompatActivity {
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.emptyView) TextView mEmptyView;
 
     private MeetupGroupAdapter mAdapter;
     public ArrayList<MeetupGroup> mMeetupGroups = new ArrayList<>();
@@ -93,7 +97,7 @@ public class GroupsActivity extends AppCompatActivity {
 
     private void findMeetupGroups(String query) {
         final MeetupService meetupService = new MeetupService();
-        meetupService.findRecommendedGroups(query, new Callback() {
+        meetupService.findGroups(query, new Callback() {
 
             @Override
             public void onFailure(Call call, IOException e) {
@@ -106,11 +110,20 @@ public class GroupsActivity extends AppCompatActivity {
 
                 GroupsActivity.this.runOnUiThread(new Runnable() {
                     @Override
-                    public void run() { mAdapter = new MeetupGroupAdapter(getApplicationContext(), mMeetupGroups);
-                        mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GroupsActivity.this);
-                        mRecyclerView.setLayoutManager(layoutManager);
-                        mRecyclerView.setHasFixedSize(true);
+                    public void run() {
+                        if (mMeetupGroups.size() == 0) {
+                            mEmptyView.setVisibility(View.VISIBLE);
+                            mRecyclerView.setVisibility(View.GONE);
+                        } else {
+                            mEmptyView.setVisibility(View.GONE);
+                            mRecyclerView.setVisibility(View.VISIBLE);
+                            Log.d("test2", "size is: " + mMeetupGroups.size());
+                            mAdapter = new MeetupGroupAdapter(getApplicationContext(), mMeetupGroups);
+                            mRecyclerView.setAdapter(mAdapter);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GroupsActivity.this);
+                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setHasFixedSize(true);
+                        }
                     }
                 });
             }

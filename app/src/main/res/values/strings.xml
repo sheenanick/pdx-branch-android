@@ -27,4 +27,5 @@
     <string name="log_in">Log In</string>
     <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
+    <string name="no_results">Sorry, no results for that search. \nTry searching for other key words.</string>
 </resources>
