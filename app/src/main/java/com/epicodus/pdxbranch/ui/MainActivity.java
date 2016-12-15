@@ -2,6 +2,8 @@ package com.epicodus.pdxbranch.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private ProgressDialog mAuthProgressDialog;
 
+    private SharedPreferences mSharedPreferences;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -40,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPreferences.edit().clear().apply();
 
         mAuth = FirebaseAuth.getInstance();
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {

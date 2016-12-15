@@ -1,7 +1,6 @@
 package com.epicodus.pdxbranch.services;
 
 import android.text.Html;
-import android.util.Log;
 
 import com.epicodus.pdxbranch.Constants;
 import com.epicodus.pdxbranch.models.MeetupGroup;
