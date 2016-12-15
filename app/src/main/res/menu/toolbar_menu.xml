@@ -2,10 +2,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_search_members"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:title="@string/search"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/action_profile"
         android:icon="@drawable/ic_account_circle_white_24dp"
         android:title="@string/action_profile"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 
     <item android:id="@+id/action_log_out"
         android:title="@string/action_log_out" />

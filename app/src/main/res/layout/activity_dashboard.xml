@@ -30,63 +30,70 @@
             android:src="@drawable/logo"/>
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/greetingTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/greeting"
-        android:textSize="24sp" />
-
-    <ImageView
-        android:id="@+id/thinkingIconImageView"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_below="@id/greetingTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/thinking"
-        android:contentDescription="@string/thinking"/>
-
-    <EditText
-        android:id="@+id/addPostEditText"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_alignBottom="@+id/thinkingIconImageView"
-        android:layout_toRightOf="@id/thinkingIconImageView"
-        android:layout_toEndOf="@+id/thinkingIconImageView"
-        android:inputType="text"
-        android:hint="@string/post_hint" />
-
-    <Button
-        android:id="@+id/postButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/greetingTextView"
-        android:layout_alignBottom="@+id/addPostEditText"
-        android:layout_toRightOf="@+id/addPostEditText"
-        android:layout_toEndOf="@+id/addPostEditText"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="5dp"
-        android:text="@string/post"
-        android:background="@color/colorPrimaryDark"
-        android:textColor="@color/colorWhite" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/postButton"
-        android:scrollbars="vertical"
-        android:layout_alignParentBottom="true">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/greetingTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="@string/greeting"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/thinkingIconImageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/thinking"
+                android:contentDescription="@string/thinking"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/addPostEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="@string/post_hint"
+                    android:layout_toLeftOf="@+id/postButton"
+                    android:layout_toStartOf="@+id/postButton"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
+                <Button
+                    android:id="@+id/postButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/post"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="@color/colorWhite" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
 </RelativeLayout>
