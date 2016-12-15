@@ -54,21 +54,19 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
 
             if (firstName.equals("") || lastName.equals("") || screenName.equals("") || zipCode.equals("")) {
                 if (firstName.equals("")) {
-                    mFirstNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
+                    mFirstNameEditText.setError("Please enter first name");
                 }
                 if (lastName.equals("")) {
-                    mLastNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
+                    mLastNameEditText.setError("Please enter last name");
                 }
                 if (screenName.equals("")) {
-                    mScreenNameEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
+                    mScreenNameEditText.setError("Please enter screen name");
                 }
                 if (zipCode.equals("")) {
-                    mZipCodeEditText.setHintTextColor(ContextCompat.getColor(CreateProfileActivity.this, R.color.colorAccent));
+                    mZipCodeEditText.setError("Please enter zip code");
                 }
-                Toast.makeText(CreateProfileActivity.this, "Please fill out entire form", Toast.LENGTH_LONG).show();
             } else {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                String uid = user.getUid();
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();;
                 Member member = new Member(firstName, lastName, screenName, zipCode, uid);
                 if (!profileImageUrl.equals("")) {
                     member.setProfileImageUrl(profileImageUrl);
