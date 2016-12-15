@@ -56,20 +56,17 @@ public class MeetupService {
                     JSONObject organizer = meetupGroupJSON.getJSONObject("organizer");
                     String organizerName = organizer.getString("name");
                     JSONObject organizerPhoto = organizer.optJSONObject("photo");
-                    String organizerPhotoLink;
+                    String organizerPhotoLink ="";
                     if (organizerPhoto != null) {
                         organizerPhotoLink = organizerPhoto.getString("thumb_link");
-                    } else {
-                        organizerPhotoLink = "http://www.pngall.com/wp-content/uploads/2016/05/Branch-Free-Download-PNG.png";
                     }
 
                     JSONObject groupPhoto = meetupGroupJSON.optJSONObject("group_photo");
-                    String groupPhotoLink;
+                    String groupPhotoLink = "";
                     if (groupPhoto != null) {
                         groupPhotoLink = groupPhoto.getString("photo_link");
-                    } else {
-                        groupPhotoLink = "http://www.pngall.com/wp-content/uploads/2016/05/Branch-Free-Download-PNG.png";
                     }
+
                     JSONArray photosJSON = meetupGroupJSON.optJSONArray("photos");
                     ArrayList<String> photos = new ArrayList<>();
                     if (photosJSON != null) {
@@ -77,7 +74,6 @@ public class MeetupService {
                             String photoLink = photosJSON.getJSONObject(j).getString("thumb_link");
                             photos.add(photoLink);
                         }
-
                     }
 
                     MeetupGroup meetupGroup = new MeetupGroup(name, link, description, date, members, organizerName, organizerPhotoLink, groupPhotoLink, photos);
