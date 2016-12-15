@@ -50,8 +50,10 @@ public class MeetupGroupDetailFragment extends Fragment implements View.OnClickL
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_meetup_group_detail, container, false);
         ButterKnife.bind(this, view);
-
-        Picasso.with(view.getContext()).load(mMeetupGroup.getmGroupPhotoThumb()).into(mGroupImage);
+        String groupPhoto = mMeetupGroup.getmGroupPhotoThumb();
+        if (!groupPhoto.equals("")) {
+            Picasso.with(view.getContext()).load(groupPhoto).into(mGroupImage);
+        }
         mGroupName.setText(mMeetupGroup.getmName());
         mNumOfMembers.setText(mMeetupGroup.getmNumOfMembers().toString() + " members");
         mGroupDescription.setText(mMeetupGroup.getmDescription());
