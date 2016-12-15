@@ -36,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static final int MAX_HEIGHT = 200;
     private Context mContext = this;
     private DatabaseReference mCurrentMemberReference;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,10 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(currentUserId);
+        Intent intent = getIntent();
+        uid = intent.getStringExtra("authorId");
+
+        mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(uid);
         mCurrentMemberReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
