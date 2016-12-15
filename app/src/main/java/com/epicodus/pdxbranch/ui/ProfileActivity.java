@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -65,11 +66,13 @@ public class ProfileActivity extends AppCompatActivity {
                 mMemberNameTextView.setText(name);
                 mScreenNameTextView.setText("(" + screenName + ")");
                 mZipCodeTextView.setText(zipCode);
-                Picasso.with(mContext)
-                        .load(imageUrl)
-                        .resize(MAX_WIDTH, MAX_HEIGHT)
-                        .centerCrop()
-                        .into(mProfileImageView);
+                if (!imageUrl.equals("")) {
+                    Picasso.with(mContext)
+                            .load(imageUrl)
+                            .resize(MAX_WIDTH, MAX_HEIGHT)
+                            .centerCrop()
+                            .into(mProfileImageView);
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

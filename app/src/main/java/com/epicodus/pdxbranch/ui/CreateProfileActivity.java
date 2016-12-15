@@ -66,11 +66,8 @@ public class CreateProfileActivity extends AppCompatActivity implements View.OnC
                     mZipCodeEditText.setError("Please enter zip code");
                 }
             } else {
-                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();;
-                Member member = new Member(firstName, lastName, screenName, zipCode, uid);
-                if (!profileImageUrl.equals("")) {
-                    member.setProfileImageUrl(profileImageUrl);
-                }
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                Member member = new Member(firstName, lastName, screenName, zipCode, profileImageUrl, uid);
                 DatabaseReference memberRef = FirebaseDatabase.getInstance().getReference("members").child(uid);
                 memberRef.setValue(member);
 

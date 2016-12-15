@@ -11,17 +11,18 @@ public class Member {
     private String lastName;
     private String screenName;
     private String zipCode;
-    private String profileImageUrl = "http://www.pngall.com/wp-content/uploads/2016/05/Branch-Free-Download-PNG.png";
+    private String profileImageUrl;
     private String pushId;
     private List<Post> posts = new ArrayList<>();
 
     public Member() {}
 
-    public Member(String firstName, String lastName, String screenName, String zipCode, String uid) {
+    public Member(String firstName, String lastName, String screenName, String zipCode, String imageUrl, String uid) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.screenName = screenName;
         this.zipCode = zipCode;
+        this.profileImageUrl = imageUrl;
         this.pushId = uid;
     }
 
