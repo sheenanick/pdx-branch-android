@@ -42,6 +42,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private String mFirstName;
     private String mLastName;
     private String mUserImageUrl;
+    private String mCurrentUserId;
     private DatabaseReference mCurrentMemberReference;
     private DatabaseReference mPostReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
@@ -57,8 +58,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         mPostButton.setOnClickListener(this);
 
-        final String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(currentUserId);
+        mCurrentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(mCurrentUserId);
         mCurrentMemberReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -112,7 +113,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 DatabaseReference pushRef = mCurrentMemberReference.child("posts").push();
                 String pushId = pushRef.getKey();
                 String author = mFirstName + " " + mLastName;
-                Post post = new Post(author, mUserImageUrl, content, pushId);
+                Post post = new Post(author, mUserImageUrl, mCurrentUserId, content, pushId);
                 pushRef.setValue(post);
                 mAddPostEditText.setText("");
             }
