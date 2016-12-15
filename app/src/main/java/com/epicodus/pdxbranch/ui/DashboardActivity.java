@@ -141,6 +141,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.action_profile:
                 Intent profileIntent = new Intent(DashboardActivity.this, ProfileActivity.class);
+                profileIntent.putExtra("authorId", mCurrentUserId);
                 startActivity(profileIntent);
                 return true;
 
