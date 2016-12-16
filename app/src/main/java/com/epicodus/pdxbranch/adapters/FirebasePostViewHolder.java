@@ -50,7 +50,7 @@ public class FirebasePostViewHolder extends RecyclerView.ViewHolder implements V
     public void onClick(View v) {
         if (v == mUserNameTextView) {
             Intent intent = new Intent(mContext, ProfileActivity.class);
-            intent.putExtra("authorId", mPostAuthorId);
+            intent.putExtra("memberId", mPostAuthorId);
             mContext.startActivity(intent);
         }
     }
