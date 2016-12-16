@@ -72,23 +72,21 @@ public class GroupsActivity extends AppCompatActivity {
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
+        searchView.setIconifiedByDefault(false);
         searchView.setQueryHint("Search Groups...");
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 addToSharedPreferences(query);
                 findMeetupGroups(query);
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
             }
-
         });
-
         return true;
     }
 
@@ -97,15 +95,6 @@ public class GroupsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_log_out:
                 logout();
-                return true;
-
-            case R.id.action_groups:
-                return true;
-
-            case R.id.action_profile:
-                Intent profileIntent = new Intent(GroupsActivity.this, ProfileActivity.class);
-                profileIntent.putExtra("authorId", mCurrentUserId);
-                startActivity(profileIntent);
                 return true;
 
             default:

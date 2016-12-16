@@ -124,6 +124,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.searchicon_menu, menu);
+        inflater.inflate(R.menu.profileicon_menu, menu);
         inflater.inflate(R.menu.toolbar_menu, menu);
         return true;
     }
@@ -144,6 +145,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 Intent profileIntent = new Intent(DashboardActivity.this, ProfileActivity.class);
                 profileIntent.putExtra("authorId", mCurrentUserId);
                 startActivity(profileIntent);
+                return true;
+
+            case R.id.action_search_members:
+                Intent searchIntent = new Intent(DashboardActivity.this, SearchMembersActivity.class);
+                startActivity(searchIntent);
                 return true;
 
             default:

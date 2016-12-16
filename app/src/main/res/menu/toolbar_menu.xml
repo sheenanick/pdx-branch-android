@@ -1,14 +1,6 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_profile"
-        android:icon="@drawable/ic_account_circle_white_24dp"
-        android:title="@string/action_profile"
-        app:showAsAction="always"/>
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/action_log_out"
         android:title="@string/action_log_out" />
     <item android:id="@+id/action_groups"
         android:title="@string/action_groups" />
-
 </menu>

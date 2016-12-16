@@ -82,7 +82,6 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.searchicon_menu, menu);
         inflater.inflate(R.menu.toolbar_menu, menu);
         return true;
     }
@@ -97,9 +96,6 @@ public class ProfileActivity extends AppCompatActivity {
             case R.id.action_groups:
                 Intent groupsIntent = new Intent(ProfileActivity.this, GroupsActivity.class);
                 startActivity(groupsIntent);
-                return true;
-
-            case R.id.action_profile:
                 return true;
 
             default:
