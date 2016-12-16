@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/branch"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/user_profile_image"/>
+    <TextView
+        android:id="@+id/memberNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/full_name"
+        android:textColor="@color/colorPrimary"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/addFriendIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_person_add_black_24dp"
+            android:contentDescription="@string/add_friend"/>
+    </RelativeLayout>
+</LinearLayout>
