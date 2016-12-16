@@ -18,9 +18,8 @@ public class FirebasePostViewHolder extends RecyclerView.ViewHolder implements V
     private static final int MAX_HEIGHT = 100;
     private TextView mUserNameTextView;
     private String mPostAuthorId;
-    private String mPostAuthorImage;
-    View mView;
-    Context mContext;
+    private View mView;
+    private Context mContext;
 
     public FirebasePostViewHolder(View itemView) {
         super(itemView);
@@ -33,13 +32,13 @@ public class FirebasePostViewHolder extends RecyclerView.ViewHolder implements V
         mUserNameTextView = (TextView) mView.findViewById(R.id.userNameTextView);
         TextView contentTextView = (TextView) mView.findViewById(R.id.contentTextView);
         mPostAuthorId = post.getAuthorId();
-        mPostAuthorImage = post.getAuthorImageUrl();
+        String postAuthorImage = post.getAuthorImageUrl();
 
         mUserNameTextView.setText(post.getAuthor());
         contentTextView.setText(post.getContent());
-        if (!mPostAuthorImage.equals("")) {
+        if (!postAuthorImage.equals("")) {
             Picasso.with(mContext)
-                    .load(mPostAuthorImage)
+                    .load(postAuthorImage)
                     .resize(MAX_WIDTH, MAX_HEIGHT)
                     .centerCrop()
                     .into(memberProfileImageView);
