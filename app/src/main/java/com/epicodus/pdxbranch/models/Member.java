@@ -14,6 +14,8 @@ public class Member {
     private String profileImageUrl;
     private String pushId;
     private List<Post> posts = new ArrayList<>();
+    private List<String> requests = new ArrayList<>();
+    private List<String> friends = new ArrayList<>();
 
     public Member() {}
 
@@ -56,5 +58,13 @@ public class Member {
 
     public List<Post> getPosts() {
         return posts;
+    }
+
+    public List<String> getRequests() {
+        return requests;
+    }
+
+    public List<String> getFriends() {
+        return friends;
     }
 }
