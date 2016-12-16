@@ -9,6 +9,7 @@ public class Post {
     private String authorId;
     private String content;
     private String pushId;
+    private String image;
 
     public Post() {}
 
@@ -38,5 +39,9 @@ public class Post {
 
     public String getPushId() {
         return pushId;
+    }
+
+    public String getImage() {
+        return image;
     }
 }
