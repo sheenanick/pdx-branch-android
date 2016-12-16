@@ -13,7 +13,6 @@
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -47,7 +46,11 @@
                 android:value=".ui.GroupsActivity" />
         </activity>
         <activity android:name=".ui.CreateAccountActivity" />
-        <activity android:name=".ui.SearchMembersActivity"></activity>
+        <activity android:name=".ui.SearchMembersActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
