@@ -1,5 +1,6 @@
 package com.epicodus.pdxbranch.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
@@ -21,6 +22,7 @@ import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.adapters.MeetupGroupAdapter;
 import com.epicodus.pdxbranch.models.MeetupGroup;
 import com.epicodus.pdxbranch.services.MeetupService;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class GroupsActivity extends AppCompatActivity {
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private String mRecentSearch;
+    private String mCurrentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class GroupsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        mCurrentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mSharedPreferences.edit();
         mRecentSearch = mSharedPreferences.getString(Constants.PREFERENCES_SEARCH_KEY, null);
@@ -63,10 +68,11 @@ public class GroupsActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.searchbar_menu, menu);
+        inflater.inflate(R.menu.toolbar_menu, menu);
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-
+        searchView.setQueryHint("Search Groups...");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -88,7 +94,23 @@ public class GroupsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.action_log_out:
+                logout();
+                return true;
+
+            case R.id.action_groups:
+                return true;
+
+            case R.id.action_profile:
+                Intent profileIntent = new Intent(GroupsActivity.this, ProfileActivity.class);
+                profileIntent.putExtra("authorId", mCurrentUserId);
+                startActivity(profileIntent);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void addToSharedPreferences(String search) {
@@ -130,4 +152,11 @@ public class GroupsActivity extends AppCompatActivity {
         });
     }
 
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(GroupsActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
 }
