@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -128,7 +127,6 @@ public class GroupsActivity extends AppCompatActivity {
                         } else {
                             mEmptyView.setVisibility(View.GONE);
                             mRecyclerView.setVisibility(View.VISIBLE);
-                            Log.d("test2", "size is: " + mMeetupGroups.size());
                             mAdapter = new MeetupGroupAdapter(getApplicationContext(), mMeetupGroups);
                             mRecyclerView.setAdapter(mAdapter);
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(GroupsActivity.this);
