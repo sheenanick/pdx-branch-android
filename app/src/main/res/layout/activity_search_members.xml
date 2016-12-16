@@ -24,12 +24,18 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
     </android.support.v7.widget.Toolbar>
-
+    <TextView
+        android:id="@+id/comingSoon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:textSize="40sp"
+        android:text="Coming soon!"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/comingSoon"
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>
 
