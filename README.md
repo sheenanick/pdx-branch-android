@@ -2,7 +2,7 @@
   <img src="https://raw.githubusercontent.com/mlawson3691/branch-social/master/public/assets/images/logo-black.png">
 </p>
 
-#### _Epicodus Android Week 1 Independent Project, 12.09.2016_
+#### _Epicodus Android Independent Project, 12.16.2016_
 
 #### By Sheena Nickerson
 
