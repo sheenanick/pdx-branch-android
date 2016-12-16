@@ -1,52 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:padding="15dp">
 
-    <ImageView
-        android:id="@+id/profileImageView"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:src="@drawable/branch"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/user_profile_image"/>
-
-    <LinearLayout
-        android:orientation="vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorWhite"
-        android:padding="10dp">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/userNameTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/user_name"
-            android:textColor="@color/colorPrimary"/>
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/branch" />
 
-        <TextView
-            android:id="@+id/contentTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/content"
-            android:textStyle="italic"/>
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/profileImage"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/user_name"
+                android:textColor="@color/colorPrimary"/>
 
             <TextView
                 android:id="@+id/timestampTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/timestamp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/colorPrimaryDark"/>
-        </RelativeLayout>
-    </LinearLayout>
+                android:textSize="16sp"
+                android:textStyle="italic"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/contentTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/content"
+        android:textSize="18sp"/>
+
+    <ImageView
+        android:id="@+id/postImage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:adjustViewBounds="true"
+        android:src="@drawable/camera"/>
 </LinearLayout>
