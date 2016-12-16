@@ -18,10 +18,14 @@ import com.epicodus.pdxbranch.adapters.FirebaseMemberViewHolder;
 import com.epicodus.pdxbranch.models.Member;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,6 +35,7 @@ public class SearchMembersActivity extends AppCompatActivity {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private String mCurrentUserId;
     private DatabaseReference mMembersRef;
+    private List<Member> mMembersList = new ArrayList<>();
     private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     @Override
@@ -45,7 +50,7 @@ public class SearchMembersActivity extends AppCompatActivity {
 
         mCurrentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mMembersRef = FirebaseDatabase.getInstance().getReference("members");
-        setUpFirebaseAdapter();
+//        setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter() {
@@ -60,11 +65,11 @@ public class SearchMembersActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mFirebaseAdapter);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mFirebaseAdapter.cleanup();
-    }
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mFirebaseAdapter.cleanup();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
