@@ -5,6 +5,8 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,14 +14,24 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.epicodus.pdxbranch.R;
+import com.epicodus.pdxbranch.adapters.FirebaseMemberViewHolder;
+import com.epicodus.pdxbranch.models.Member;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SearchMembersActivity extends AppCompatActivity {
     @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private String mCurrentUserId;
+    private DatabaseReference mMembersRef;
+    private FirebaseRecyclerAdapter mFirebaseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +44,26 @@ public class SearchMembersActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mCurrentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        mMembersRef = FirebaseDatabase.getInstance().getReference("members");
+        setUpFirebaseAdapter();
+    }
+
+    private void setUpFirebaseAdapter() {
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Member, FirebaseMemberViewHolder>(Member.class,R.layout.member_list_item, FirebaseMemberViewHolder.class, mMembersRef) {
+            @Override
+            protected void populateViewHolder(FirebaseMemberViewHolder viewHolder, Member model, int position) {
+                viewHolder.bindMember(model);
+            }
+        };
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setAdapter(mFirebaseAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mFirebaseAdapter.cleanup();
     }
 
     @Override
