@@ -1,11 +1,14 @@
 package com.epicodus.pdxbranch.ui;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 import butterknife.Bind;
@@ -38,6 +43,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Bind(R.id.addPostEditText) EditText mAddPostEditText;
     @Bind(R.id.postButton) Button mPostButton;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @Bind(R.id.addPhoto) ImageView mAddPhoto;
+    @Bind(R.id.postPhoto) ImageView mPostPhoto;
 
     private String mFirstName;
     private String mLastName;
@@ -46,6 +53,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private DatabaseReference mCurrentMemberReference;
     private DatabaseReference mPostReference;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
+    private static final int REQUEST_IMAGE_CAPTURE = 111;
+    private Bitmap mBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +66,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         mPostButton.setOnClickListener(this);
+        mAddPhoto.setOnClickListener(this);
 
         mCurrentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(mCurrentUserId);
@@ -114,9 +124,38 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 String pushId = pushRef.getKey();
                 String author = mFirstName + " " + mLastName;
                 Post post = new Post(author, mUserImageUrl, mCurrentUserId, content, pushId);
+
+                if (!mBitmap.equals("")) {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    mBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                    String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
+                    post.setImage(imageEncoded);
+                    mPostPhoto.setVisibility(View.GONE);
+                }
+
                 pushRef.setValue(post);
                 mAddPostEditText.setText("");
             }
+        }
+        if (v == mAddPhoto) {
+            onLaunchCamera();
+        }
+    }
+
+    public void onLaunchCamera() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(this.getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == this.RESULT_OK) {
+            Bundle extras = data.getExtras();
+            mBitmap = (Bitmap) extras.get("data");
+            mPostPhoto.setImageBitmap(mBitmap);
+            mPostPhoto.setVisibility(View.VISIBLE);
         }
     }
 
