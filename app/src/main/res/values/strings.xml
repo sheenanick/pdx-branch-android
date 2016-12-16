@@ -29,4 +29,8 @@
     <string name="password_hint">Password</string>
     <string name="no_results">Sorry, no results for that search. \nTry searching for other key words.</string>
     <string name="action_search">Search</string>
+    <string name="user_name">User Name</string>
+    <string name="content">Content</string>
+    <string name="timestamp">Timestamp</string>
+    <string name="user_profile_image">user profile image</string>
 </resources>
