@@ -32,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Map;
 
 import butterknife.Bind;
@@ -98,7 +99,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             @Override
             protected void populateViewHolder(FirebasePostViewHolder viewHolder,
                                               Post model, int position) {
-                viewHolder.bindPost(model);
+                try {
+                    viewHolder.bindPost(model);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
         mRecyclerView.setHasFixedSize(true);
@@ -125,14 +130,14 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 String author = mFirstName + " " + mLastName;
                 Post post = new Post(author, mUserImageUrl, mCurrentUserId, content, pushId);
 
-                if (!mBitmap.equals("")) {
+                if (mBitmap != null) {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     mBitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
                     String imageEncoded = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);
                     post.setImage(imageEncoded);
                     mPostPhoto.setVisibility(View.GONE);
+                    mBitmap = null;
                 }
-
                 pushRef.setValue(post);
                 mAddPostEditText.setText("");
             }
