@@ -49,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        uid = intent.getStringExtra("authorId");
+        uid = intent.getStringExtra("memberId");
 
         mCurrentMemberReference = FirebaseDatabase.getInstance().getReference("members").child(uid);
         mCurrentMemberReference.addValueEventListener(new ValueEventListener() {
