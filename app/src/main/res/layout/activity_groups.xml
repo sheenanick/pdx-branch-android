@@ -24,21 +24,12 @@
         android:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/toolbar" />
-
-    <TextView
-        android:id="@+id/emptyView"
-        android:visibility="gone"
-        android:layout_below="@+id/toolbar"
-        android:layout_width="match_parent"
+    <fragment
+        android:id="@+id/fragmentRestaurantList"
+        android:name="com.epicodus.pdxbranch.ui.GroupsListFragment"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:textSize="22sp"
-        android:padding="5dp"
-        android:text="@string/no_results"/>
+        android:layout_below="@+id/toolbar"
+        tools:layout="@layout/fragment_groups_list" />
+
 </RelativeLayout>
