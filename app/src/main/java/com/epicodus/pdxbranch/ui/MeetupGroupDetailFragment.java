@@ -12,11 +12,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.epicodus.pdxbranch.Constants;
 import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.models.MeetupGroup;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,12 +32,16 @@ public class MeetupGroupDetailFragment extends Fragment implements View.OnClickL
     @Bind(R.id.groupDescription) TextView mGroupDescription;
     @Bind(R.id.joinOnMeetupButton) Button mJoinButton;
 
+    private ArrayList<MeetupGroup> mMeetupGroups;
+    private int mPosition;
     private MeetupGroup mMeetupGroup;
 
-    public static MeetupGroupDetailFragment newInstance(MeetupGroup meetupGroup) {
+    public static MeetupGroupDetailFragment newInstance(ArrayList<MeetupGroup> meetupGroups, int position) {
         MeetupGroupDetailFragment meetupGroupDetailFragment = new MeetupGroupDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("meetupGroup", Parcels.wrap(meetupGroup));
+        args.putParcelable(Constants.EXTRA_KEY_MEETUP_GROUPS, Parcels.wrap(meetupGroups));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);
+
         meetupGroupDetailFragment.setArguments(args);
         return meetupGroupDetailFragment;
     }
@@ -42,7 +49,9 @@ public class MeetupGroupDetailFragment extends Fragment implements View.OnClickL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mMeetupGroup = Parcels.unwrap(getArguments().getParcelable("meetupGroup"));
+        mMeetupGroups = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_MEETUP_GROUPS));
+        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+        mMeetupGroup = mMeetupGroups.get(mPosition);
     }
 
     @Override

@@ -19,7 +19,7 @@ public class MeetupGroupPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return MeetupGroupDetailFragment.newInstance(mMeetupGroups.get(position));
+        return MeetupGroupDetailFragment.newInstance(mMeetupGroups, position);
     }
 
     @Override
