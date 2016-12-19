@@ -122,7 +122,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         if (v == mPostButton) {
             String content = mAddPostEditText.getText().toString().trim();
 
-            if (content.equals("")) {
+            if (content.equals("") && mBitmap == null) {
                 Toast.makeText(DashboardActivity.this, "Enter something to post!", Toast.LENGTH_SHORT).show();
             } else {
                 DatabaseReference pushRef = mCurrentMemberReference.child("posts").push();
