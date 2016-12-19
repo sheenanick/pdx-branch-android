@@ -42,4 +42,5 @@
     <string name="meetup_group_image">meetup group image</string>
     <string name="organized_by_person">Organized by person</string>
     <string name="screenname">(screenName)</string>
+    <string name="pdxBranch_logo">pdxBranch logo</string>
 </resources>

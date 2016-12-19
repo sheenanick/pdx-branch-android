@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mAuth = FirebaseAuth.getInstance();
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String password = mPassword.getText().toString().trim();
 
         if (email.equals("")) {
-            mEmail.setError("Please enter yoru email");
+            mEmail.setError("Please enter your email");
             return;
         }
         if (password.equals("")) {
