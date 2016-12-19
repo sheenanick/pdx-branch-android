@@ -43,7 +43,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Bind(R.id.greetingTextView) TextView mGreetingTextView;
     @Bind(R.id.addPostEditText) EditText mAddPostEditText;
     @Bind(R.id.postButton) Button mPostButton;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.addPhoto) ImageView mAddPhoto;
     @Bind(R.id.postPhoto) ImageView mPostPhoto;
 
@@ -52,8 +51,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private String mUserImageUrl;
     private String mCurrentUserId;
     private DatabaseReference mCurrentMemberReference;
-    private DatabaseReference mPostReference;
-    private FirebaseRecyclerAdapter mFirebaseAdapter;
     private static final int REQUEST_IMAGE_CAPTURE = 111;
     private Bitmap mBitmap;
 
@@ -87,34 +84,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
-        mPostReference = mCurrentMemberReference.child("posts");
-        setUpFirebaseAdapter();
-    }
-
-    private void setUpFirebaseAdapter() {
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Post, FirebasePostViewHolder>
-                (Post.class, R.layout.post_list_item, FirebasePostViewHolder.class,
-                        mPostReference) {
-
-            @Override
-            protected void populateViewHolder(FirebasePostViewHolder viewHolder,
-                                              Post model, int position) {
-                try {
-                    viewHolder.bindPost(model);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mFirebaseAdapter);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mFirebaseAdapter.cleanup();
     }
 
     @Override

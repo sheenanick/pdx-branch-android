@@ -117,12 +117,12 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <fragment
+            android:id="@+id/fragmentPostsList"
+            android:name="com.epicodus.pdxbranch.ui.PostsListFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical">
-        </android.support.v7.widget.RecyclerView>
+            tools:layout="@layout/fragment_groups_list" />
 
     </LinearLayout>
 </RelativeLayout>
