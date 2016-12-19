@@ -6,13 +6,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="119dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/groupImageView"
             android:layout_width="119dp"
             android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@color/colorWhite"
             android:scaleType="fitCenter"
             android:src="@drawable/meetup" />
         <LinearLayout
@@ -28,12 +29,12 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="Group Name" />
+                android:text="@string/group_name" />
             <TextView
                 android:id="@+id/organizerTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Organized by person"
+                android:text="@string/organized_by_person"
                 android:textStyle="italic"/>
         </LinearLayout>
     </LinearLayout>
