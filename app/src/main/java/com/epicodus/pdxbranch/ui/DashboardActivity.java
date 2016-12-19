@@ -51,7 +51,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private String mUserImageUrl;
     private String mCurrentUserId;
     private DatabaseReference mCurrentMemberReference;
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 0;
     private Bitmap mBitmap;
 
     @Override
