@@ -39,7 +39,6 @@ public class GroupsListFragment extends Fragment {
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     @Bind(R.id.emptyView) TextView mEmptyView;
 
-    private MeetupGroupAdapter mAdapter;
     public ArrayList<MeetupGroup> mMeetupGroups = new ArrayList<>();
 
     private SharedPreferences mSharedPreferences;
@@ -96,10 +95,8 @@ public class GroupsListFragment extends Fragment {
                         } else {
                             mEmptyView.setVisibility(View.GONE);
                             mRecyclerView.setVisibility(View.VISIBLE);
-                            mAdapter = new MeetupGroupAdapter(getActivity(), mMeetupGroups);
-                            mRecyclerView.setAdapter(mAdapter);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-                            mRecyclerView.setLayoutManager(layoutManager);
+                            mRecyclerView.setAdapter(new MeetupGroupAdapter(getActivity(), mMeetupGroups));
+                            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                             mRecyclerView.setHasFixedSize(true);
                         }
                     }
