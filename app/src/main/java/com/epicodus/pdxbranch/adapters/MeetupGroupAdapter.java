@@ -97,7 +97,8 @@ public class MeetupGroupAdapter extends RecyclerView.Adapter<MeetupGroupAdapter.
                 Picasso.with(mContext).load(meetupGroup.getmGroupPhotoThumb()).into(mGroupImageView);
             }
             mGroupName.setText(meetupGroup.getmName());
-            mOrganizerName.setText("Organized by " + meetupGroup.getmOrganizerName());
+            String organizer = "Organized by " + meetupGroup.getmOrganizerName();
+            mOrganizerName.setText(organizer);
         }
     }
 }
