@@ -108,12 +108,6 @@ public class SearchMembersActivity extends AppCompatActivity {
                 startActivity(groupsIntent);
                 return true;
 
-            case R.id.action_profile:
-                Intent profileIntent = new Intent(SearchMembersActivity.this, ProfileActivity.class);
-                profileIntent.putExtra("authorId", mCurrentUserId);
-                startActivity(profileIntent);
-                return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
