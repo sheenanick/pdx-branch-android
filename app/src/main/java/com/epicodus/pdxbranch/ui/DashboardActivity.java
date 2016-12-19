@@ -125,7 +125,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == this.RESULT_OK) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == DashboardActivity.RESULT_OK) {
             Bundle extras = data.getExtras();
             mBitmap = (Bitmap) extras.get("data");
             mPostPhoto.setImageBitmap(mBitmap);
