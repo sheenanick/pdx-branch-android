@@ -4,15 +4,8 @@
     android:id="@+id/activity_search_members"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context="com.epicodus.pdxbranch.ui.SearchMembersActivity">
-
-    <ImageView
-        android:id="@+id/backgroundImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background"
-        android:contentDescription="@string/background"/>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
