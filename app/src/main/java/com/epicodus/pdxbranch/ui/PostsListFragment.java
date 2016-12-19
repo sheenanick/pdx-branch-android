@@ -57,7 +57,6 @@ public class PostsListFragment extends Fragment {
                 }
             }
         };
-        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mFirebaseAdapter);
     }
