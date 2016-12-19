@@ -43,4 +43,9 @@
     <string name="organized_by_person">Organized by person</string>
     <string name="screenname">(screenName)</string>
     <string name="pdxBranch_logo">pdxBranch logo</string>
+    <string name="submit">Submit</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="sign_up_with_email">Sign Up With Email</string>
 </resources>

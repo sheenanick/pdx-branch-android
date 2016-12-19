@@ -3,15 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context="com.epicodus.pdxbranch.ui.CreateAccountActivity">
-
-    <ImageView
-        android:id="@+id/backgroundImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background"
-        android:contentDescription="@string/background"/>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -34,10 +27,11 @@
         android:id="@+id/signUpTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up With Email"
+        android:text="@string/sign_up_with_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="146dp"
         android:layout_marginBottom="20dp"
+        android:textStyle="bold"
         android:textSize="28sp"/>
 
     <EditText
@@ -50,7 +44,7 @@
         android:padding="5dp"
         android:background="@color/colorWhite"
         android:inputType="textEmailAddress"
-        android:hint="Email"/>
+        android:hint="@string/email"/>
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -65,7 +59,7 @@
         android:padding="5dp"
         android:background="@color/colorWhite"
         android:inputType="textPassword"
-        android:hint="Password"/>
+        android:hint="@string/password"/>
 
     <EditText
         android:id="@+id/confirmPasswordEditText"
@@ -79,7 +73,7 @@
         android:padding="5dp"
         android:background="@color/colorWhite"
         android:inputType="textPassword"
-        android:hint="Confirm Password"/>
+        android:hint="@string/confirm_password"/>
 
     <Button
         android:id="@+id/createUserButton"
@@ -93,6 +87,6 @@
         android:layout_alignEnd="@+id/confirmPasswordEditText"
         android:background="@color/colorPrimaryDark"
         android:textColor="@color/colorWhite"
-        android:text="Submit" />
+        android:text="@string/submit" />
 
 </RelativeLayout>
