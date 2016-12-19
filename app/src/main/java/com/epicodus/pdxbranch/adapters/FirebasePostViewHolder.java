@@ -40,6 +40,7 @@ public class FirebasePostViewHolder extends RecyclerView.ViewHolder implements V
         mPostAuthorId = post.getAuthorId();
         String postAuthorImage = post.getAuthorImageUrl();
         String postImageBitmap = post.getImage();
+        String postContent = post.getContent();
 
         if (postImageBitmap != null) {
             Bitmap imageBitmap = decodeFromFirebaseBase64(postImageBitmap);
@@ -48,7 +49,11 @@ public class FirebasePostViewHolder extends RecyclerView.ViewHolder implements V
         }
 
         mUserNameTextView.setText(post.getAuthor());
-        contentTextView.setText(post.getContent());
+        if (postContent.equals("")){
+            contentTextView.setVisibility(View.GONE);
+        } else {
+            contentTextView.setText(postContent);
+        }
         if (!postAuthorImage.equals("")) {
             Picasso.with(mContext)
                     .load(postAuthorImage)
