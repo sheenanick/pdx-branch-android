@@ -8,8 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,12 +27,13 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.toolbar) Toolbar mToolbar;
     @Bind(R.id.profileImageView) ImageView mProfileImageView;
     @Bind(R.id.memberNameTextView) TextView mMemberNameTextView;
     @Bind(R.id.screenNameTextView) TextView mScreenNameTextView;
     @Bind(R.id.zipCodeTextView) TextView mZipCodeTextView;
+    @Bind(R.id.changePhotoIcon) ImageView mChangePhoto;
 
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
@@ -77,6 +80,15 @@ public class ProfileActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+
+        mChangePhoto.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mChangePhoto) {
+            Toast.makeText(mContext, "Sorry, this feature is not yet available", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

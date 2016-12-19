@@ -41,4 +41,5 @@
     <string name="visit_on_meetup">Visit on Meetup</string>
     <string name="meetup_group_image">meetup group image</string>
     <string name="organized_by_person">Organized by person</string>
+    <string name="screenname">(screenName)</string>
 </resources>

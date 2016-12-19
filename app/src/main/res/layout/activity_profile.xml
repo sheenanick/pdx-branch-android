@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".ui.ProfileActivity">
-
-    <ImageView
-        android:id="@+id/backgroundImageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background"
-        android:contentDescription="@string/background"/>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -31,43 +23,85 @@
             android:src="@drawable/logo"/>
     </android.support.v7.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/profileImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/branch"
-        android:layout_below="@+id/toolbar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar">
 
-    <TextView
-        android:id="@+id/memberNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:text="User Name"
-        android:textSize="24sp"
-        android:layout_below="@+id/profileImageView"
-        android:layout_centerHorizontal="true" />
+        <LinearLayout
+            android:id="@+id/profileLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:gravity="center">
 
-    <TextView
-        android:id="@+id/screenNameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:text="Screen Name"
-        android:textSize="18sp"
-        android:layout_below="@+id/memberNameTextView"
-        android:layout_centerHorizontal="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:background="@color/colorPrimaryDark" />
+            <View
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@color/colorPrimaryDark" />
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/branch"
+                android:background="@color/colorWhite"/>
+            <ImageView
+                android:id="@+id/changePhotoIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_a_photo_white_24dp"
+                android:background="@color/colorPrimaryDark"
+                android:padding="2sp"
+                android:layout_alignRight="@+id/profileImageView"
+                android:layout_alignEnd="@+id/profileImageView"
+                android:layout_alignBottom="@+id/profileImageView"
+                android:layout_marginRight="3dp"
+                android:layout_marginEnd="3dp"/>
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/zipCodeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:text="Zip Code"
-        android:textSize="18sp"
-        android:layout_below="@+id/screenNameTextView"
-        android:layout_centerHorizontal="true" />
+            <TextView
+                android:id="@+id/memberNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_name"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"/>
 
+            <TextView
+                android:id="@+id/screenNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/screenname"
+                android:textSize="18sp"
+                android:textStyle="italic"/>
+
+            <TextView
+                android:id="@+id/zipCodeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zip_code"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 </RelativeLayout>
