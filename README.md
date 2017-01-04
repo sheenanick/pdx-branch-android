@@ -6,7 +6,7 @@
 
 #### By Sheena Nickerson
 
-This is an Android application for pdxBranch - a networking site for developers in the Portland, Oregon area. Currently, users can create an account and log in to create Posts that are added to their newsfeed and profile. Posts can inlcude pictures taken on the device. Users can also search for groups on Meetup. By default, 10 Meetup groups in the tech industry will be listed on the "Groups" screen.
+This is an Android application for pdxBranch - a networking site for developers in the Portland, Oregon area. Currently, users can create an account and log in to create Posts that are added to their news feed and profile. Posts can inlcude pictures taken on the device. Users can also search for groups on Meetup. By default, 10 Meetup groups in the tech industry will be listed on the "Groups" screen.
 
 This project is still a work in progress and the following features are not yet implemented:
 * Adding friends
