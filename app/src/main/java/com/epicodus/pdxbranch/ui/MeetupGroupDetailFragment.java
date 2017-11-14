@@ -21,16 +21,16 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MeetupGroupDetailFragment extends Fragment implements View.OnClickListener {
-    @Bind(R.id.groupImageView) ImageView mGroupImage;
-    @Bind(R.id.meetupLogo) ImageView mMeetupLogo;
-    @Bind(R.id.groupName) TextView mGroupName;
-    @Bind(R.id.numOfMembers) TextView mNumOfMembers;
-    @Bind(R.id.groupDescription) TextView mGroupDescription;
-    @Bind(R.id.joinOnMeetupButton) Button mJoinButton;
+    @BindView(R.id.groupImageView) ImageView mGroupImage;
+    @BindView(R.id.meetupLogo) ImageView mMeetupLogo;
+    @BindView(R.id.groupName) TextView mGroupName;
+    @BindView(R.id.numOfMembers) TextView mNumOfMembers;
+    @BindView(R.id.groupDescription) TextView mGroupDescription;
+    @BindView(R.id.joinOnMeetupButton) Button mJoinButton;
 
     private ArrayList<MeetupGroup> mMeetupGroups;
     private int mPosition;

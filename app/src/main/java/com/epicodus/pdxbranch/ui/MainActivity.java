@@ -21,15 +21,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    @Bind(R.id.signUpTextView) TextView mSignUpTextView;
-    @Bind(R.id.emailEditText) EditText mEmail;
-    @Bind(R.id.passwordEditText) EditText mPassword;
-    @Bind(R.id.logInButton) Button mLogInButton;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.signUpTextView) TextView mSignUpTextView;
+    @BindView(R.id.emailEditText) EditText mEmail;
+    @BindView(R.id.passwordEditText) EditText mPassword;
+    @BindView(R.id.logInButton) Button mLogInButton;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;

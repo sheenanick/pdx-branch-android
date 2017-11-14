@@ -19,11 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class PostsListFragment extends Fragment {
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private FirebaseRecyclerAdapter mFirebaseAdapter;
     private DatabaseReference mPostReference;
 

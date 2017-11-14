@@ -1,10 +1,9 @@
 package com.epicodus.pdxbranch.ui;
 
 import android.content.Intent;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -18,21 +17,18 @@ import com.epicodus.pdxbranch.adapters.FirebaseMemberViewHolder;
 import com.epicodus.pdxbranch.models.Member;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SearchMembersActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private String mCurrentUserId;
     private DatabaseReference mMembersRef;
     private List<Member> mMembersList = new ArrayList<>();

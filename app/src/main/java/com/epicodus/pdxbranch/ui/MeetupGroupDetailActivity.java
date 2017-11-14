@@ -13,12 +13,12 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MeetupGroupDetailActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.meetupGroupsViewPager) ViewPager mViewPager;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.meetupGroupsViewPager) ViewPager mViewPager;
     private MeetupGroupPagerAdapter adapterViewPager;
     ArrayList<MeetupGroup> mMeetupGroups = new ArrayList<>();
 

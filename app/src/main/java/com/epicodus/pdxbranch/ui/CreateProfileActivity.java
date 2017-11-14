@@ -1,35 +1,31 @@
 package com.epicodus.pdxbranch.ui;
 
 import android.content.Intent;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
 import com.epicodus.pdxbranch.models.Member;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CreateProfileActivity extends AppCompatActivity implements View.OnClickListener{
     public static final String TAG = CreateProfileActivity.class.getSimpleName();
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.firstNameEditText) EditText mFirstNameEditText;
-    @Bind(R.id.lastNameEditText) EditText mLastNameEditText;
-    @Bind(R.id.screenNameEditText) EditText mScreenNameEditText;
-    @Bind(R.id.zipCodeEditText) EditText mZipCodeEditText;
-    @Bind(R.id.profileImageUrl) EditText mProfileImageUrl;
-    @Bind(R.id.submitButton) Button mSubmitButton;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.firstNameEditText) EditText mFirstNameEditText;
+    @BindView(R.id.lastNameEditText) EditText mLastNameEditText;
+    @BindView(R.id.screenNameEditText) EditText mScreenNameEditText;
+    @BindView(R.id.zipCodeEditText) EditText mZipCodeEditText;
+    @BindView(R.id.profileImageUrl) EditText mProfileImageUrl;
+    @BindView(R.id.submitButton) Button mSubmitButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

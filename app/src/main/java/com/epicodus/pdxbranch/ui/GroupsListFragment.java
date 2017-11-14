@@ -10,7 +10,6 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,15 +28,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class GroupsListFragment extends Fragment {
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
-    @Bind(R.id.emptyView) TextView mEmptyView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.emptyView) TextView mEmptyView;
 
     public ArrayList<MeetupGroup> mMeetupGroups = new ArrayList<>();
 

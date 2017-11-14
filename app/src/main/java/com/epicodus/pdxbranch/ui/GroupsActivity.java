@@ -6,11 +6,11 @@ import android.support.v7.widget.Toolbar;
 
 import com.epicodus.pdxbranch.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class GroupsActivity extends AppCompatActivity {
-    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
 
 
     @Override

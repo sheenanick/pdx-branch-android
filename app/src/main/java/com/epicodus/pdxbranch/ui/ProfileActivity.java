@@ -24,16 +24,16 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.profileImageView) ImageView mProfileImageView;
-    @Bind(R.id.memberNameTextView) TextView mMemberNameTextView;
-    @Bind(R.id.screenNameTextView) TextView mScreenNameTextView;
-    @Bind(R.id.zipCodeTextView) TextView mZipCodeTextView;
-    @Bind(R.id.changePhotoIcon) ImageView mChangePhoto;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.profileImageView) ImageView mProfileImageView;
+    @BindView(R.id.memberNameTextView) TextView mMemberNameTextView;
+    @BindView(R.id.screenNameTextView) TextView mScreenNameTextView;
+    @BindView(R.id.zipCodeTextView) TextView mZipCodeTextView;
+    @BindView(R.id.changePhotoIcon) ImageView mChangePhoto;
 
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;

@@ -2,14 +2,11 @@ package com.epicodus.pdxbranch.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,9 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.pdxbranch.R;
-import com.epicodus.pdxbranch.adapters.FirebasePostViewHolder;
 import com.epicodus.pdxbranch.models.Post;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,19 +27,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
-    @Bind(R.id.toolbar) Toolbar mToolbar;
-    @Bind(R.id.greetingTextView) TextView mGreetingTextView;
-    @Bind(R.id.addPostEditText) EditText mAddPostEditText;
-    @Bind(R.id.postButton) Button mPostButton;
-    @Bind(R.id.addPhoto) ImageView mAddPhoto;
-    @Bind(R.id.postPhoto) ImageView mPostPhoto;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.greetingTextView) TextView mGreetingTextView;
+    @BindView(R.id.addPostEditText) EditText mAddPostEditText;
+    @BindView(R.id.postButton) Button mPostButton;
+    @BindView(R.id.addPhoto) ImageView mAddPhoto;
+    @BindView(R.id.postPhoto) ImageView mPostPhoto;
 
     private String mFirstName;
     private String mLastName;

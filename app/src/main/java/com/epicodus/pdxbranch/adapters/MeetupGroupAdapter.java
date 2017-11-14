@@ -22,7 +22,7 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MeetupGroupAdapter extends RecyclerView.Adapter<MeetupGroupAdapter.MeetupGroupViewHolder> {
@@ -52,9 +52,9 @@ public class MeetupGroupAdapter extends RecyclerView.Adapter<MeetupGroupAdapter.
     }
 
     public class MeetupGroupViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @Bind(R.id.groupImageView) ImageView mGroupImageView;
-        @Bind(R.id.groupNameTextView) TextView mGroupName;
-        @Bind(R.id.organizerTextView) TextView mOrganizerName;
+        @BindView(R.id.groupImageView) ImageView mGroupImageView;
+        @BindView(R.id.groupNameTextView) TextView mGroupName;
+        @BindView(R.id.organizerTextView) TextView mOrganizerName;
 
         private Context mContext;
         private int mOrientation;
